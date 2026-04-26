@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programmes — KLG Digital</title>
+   <link rel="icon" type="image/png" href="../Images/KLG-Digital-blanc.png">
+  <link rel="stylesheet" href="../style.css">
+
+  <style>
+    /* ================= CONTENU PRINCIPAL ================= */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 24px 120px;
+    }
+
+    .heading-tag {
+      font-size: 0.75em;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #a855f7;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2em, 5vw, 3.2em);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      color: white;
+    }
+
+    .subtitle {
+      color: #6b6b8a;
+      font-size: 1em;
+      line-height: 1.7;
+      margin-bottom: 64px;
+      max-width: 520px;
+    }
+
+    /* ================= GRILLE CARTES ================= */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 28px;
+    }
+
+    /* ================= CARTE ================= */
+    .card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(168,85,247,0.2);
+      border-radius: 20px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Ligne lumineuse en haut */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(168,85,247,0.5), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .card:hover {
+      border-color: rgba(168,85,247,0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(168,85,247,0.12);
+    }
+
+    .card:hover::before { opacity: 1; }
+
+    /* Header de la carte */
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      overflow: hidden;
+      background: rgba(168,85,247,0.1);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-title {
+      font-size: 1.25em;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 4px;
+    }
+
+    /* Badge langage */
+    .card-lang {
+      display: inline-block;
+      font-size: 0.7em;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #a855f7;
+      background: rgba(168,85,247,0.1);
+      border: 1px solid rgba(168,85,247,0.2);
+      border-radius: 20px;
+      padding: 3px 10px;
+    }
+
+    .card-desc {
+      color: #9d9db5;
+      font-size: 0.92em;
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    /* ================= BOUTONS ================= */
+    .card-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 0.85em;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    /* Bouton GitHub */
+    .btn-github {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: white;
+    }
+    .btn-github:hover {
+      background: rgba(255,255,255,0.1);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+
+    /* Bouton téléchargement */
+    .btn-download {
+      background: linear-gradient(135deg, #7c3aed, #a855f7);
+      border: none;
+      color: white;
+    }
+    .btn-download:hover {
+      box-shadow: 0 4px 20px rgba(168,85,247,0.4);
+    }
+
+    /* Icônes SVG inline */
+    .btn svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
+    }
+
+    /* ================= MOBILE ================= */
+    @media (max-width: 600px) {
+      main { padding: 48px 16px 80px; }
+      .cards-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAVBAR JS ================= -->
+  <script src="../js/navbar.js"></script>
+  <!-- ================================================= -->
+
+
+  <!-- ===================== STARS JS ================= -->
+  <script src="../js/stars.js"></script>
+  <!-- ================================================= -->
+
+
+  <!-- ==================== CONTENU ==================== -->
+  <main>
+    <p class="heading-tag">✦ Open source</p>
+    <h1>Programmes</h1>
+    <p class="subtitle">Des outils pensés pour simplifier le quotidien. Libres, gratuits, directement utilisables.</p>
+
+    <!-- GRILLE DE CARTES -->
+    <div class="cards-grid">
+
+      <!-- CARTE : DockerEase -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <img src="https://raw.githubusercontent.com/StarKev/DockerEase/main/sources/DockerEase.png"
+                 alt="DockerEase"
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='🐋';">
+          </div>
+          <div>
+            <div class="card-title">DockerEase</div>
+            <span class="card-lang">Bash · Linux</span>
+          </div>
+        </div>
+        <p class="card-desc">
+          Fini les configurations à rallonge. Une seule commande suffit pour installer et configurer Docker — sans jamais retaper <code style="background:rgba(168,85,247,0.15);padding:1px 6px;border-radius:4px;font-size:0.9em;">sudo</code>.
+        </p>
+        <div class="card-actions">
+          <a href="https://github.com/StarKev/DockerEase" target="_blank" class="btn btn-github">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.1.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.37-1.33-1.74-1.33-1.74-1.08-.74.08-.73.08-.73 1.2.09 1.83 1.23 1.83 1.23 1.06 1.82 2.79 1.29 3.47.99.1-.77.41-1.29.75-1.59-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.005 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- CARTE : QuickCopyMouse -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <img src="https://raw.githubusercontent.com/StarKev/QuickCopyMouse/master/sources/QuickCopyMouse.png"
+                 alt="QuickCopyMouse"
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='🖱️';">
+          </div>
+          <div>
+            <div class="card-title">QuickCopyMouse</div>
+            <span class="card-lang">AutoHotkey · Windows</span>
+          </div>
+        </div>
+        <p class="card-desc">
+          Tes boutons latéraux enfin utiles. Copier-coller en un clic depuis ta souris, sans logiciel, sans prise de tête.
+        </p>
+        <div class="card-actions">
+          <a href="https://github.com/StarKev/QuickCopyMouse" target="_blank" class="btn btn-github">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.1.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.37-1.33-1.74-1.33-1.74-1.08-.74.08-.73.08-.73 1.2.09 1.83 1.23 1.83 1.23 1.06 1.82 2.79 1.29 3.47.99.1-.77.41-1.29.75-1.59-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.005 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+          <a href="https://github.com/StarKev/QuickCopyMouse/releases/download/1.0.0/QuickCopyMouse.exe" class="btn btn-download">
+            <svg viewBox="0 0 24 24"><path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-7 2h14v2H5v-2z"/></svg>
+            Télécharger .exe
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  <!-- ================================================= -->
+
+
+  <!-- ===================== FOOTER JS ================= -->
+  <script src="../js/footer.js"></script>
+  <!-- ================================================= -->
+
+</body>
+</html>

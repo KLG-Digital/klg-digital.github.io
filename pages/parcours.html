@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon parcours — KLG Digital</title>
+  <link rel="icon" type="image/png" href="../Images/KLG-Digital-blanc.png">
+  <link rel="stylesheet" href="../style.css">
+
+  <style>
+
+    /* ================= CONTENU PRINCIPAL ================= */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 80px 24px 120px;
+    }
+
+    .heading-tag {
+      font-size: 0.75em;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #a855f7;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2em, 5vw, 3.2em);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 56px;
+      color: white;
+    }
+
+    /* ================= TIMELINE ================= */
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+    }
+
+    /* Ligne verticale centrale */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(180deg, #a855f7, rgba(168,85,247,0.1));
+    }
+
+    /* ================= ITEM TIMELINE ================= */
+    .timeline-item {
+      position: relative;
+      margin-bottom: 48px;
+      padding-left: 32px;
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: slideIn 0.5s ease forwards;
+    }
+
+    .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+    .timeline-item:nth-child(2) { animation-delay: 0.25s; }
+    .timeline-item:nth-child(3) { animation-delay: 0.4s; }
+    .timeline-item:nth-child(4) { animation-delay: 0.55s; }
+    .timeline-item:nth-child(5) { animation-delay: 0.7s; }
+    .timeline-item:nth-child(6) { animation-delay: 0.85s; }
+
+    @keyframes slideIn {
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Point sur la ligne */
+    .timeline-dot {
+      position: absolute;
+      left: -39px;
+      top: 14px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #a855f7;
+      border: 2px solid #07071a;
+      box-shadow: 0 0 10px rgba(168,85,247,0.6);
+      transition: box-shadow 0.3s;
+    }
+
+    .timeline-item:hover .timeline-dot {
+      box-shadow: 0 0 20px rgba(168,85,247,0.9);
+    }
+
+    /* Point "en cours" — pulsation */
+    .timeline-dot.current {
+      background: #a855f7;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 10px rgba(168,85,247,0.6); }
+      50%       { box-shadow: 0 0 24px rgba(168,85,247,1); }
+    }
+
+    /* ================= CARTE ================= */
+    .timeline-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(168,85,247,0.15);
+      border-radius: 16px;
+      padding: 24px 28px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .timeline-item:hover .timeline-card {
+      border-color: rgba(168,85,247,0.4);
+      background: rgba(168,85,247,0.04);
+    }
+
+    /* Logo établissement */
+    .timeline-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+      padding: 6px;
+    }
+
+    .timeline-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Contenu texte */
+    .timeline-content { flex: 1; }
+
+    .timeline-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+
+    /* Badge type : formation / expérience */
+    .badge {
+      display: inline-block;
+      font-size: 0.68em;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+
+    .badge-formation {
+      background: rgba(59,130,246,0.15);
+      border: 1px solid rgba(59,130,246,0.3);
+      color: #93c5fd;
+    }
+
+    .badge-pro {
+      background: rgba(34,197,94,0.12);
+      border: 1px solid rgba(34,197,94,0.3);
+      color: #86efac;
+    }
+
+    .badge-autre {
+      background: rgba(251,191,36,0.1);
+      border: 1px solid rgba(251,191,36,0.25);
+      color: #fcd34d;
+    }
+
+    .badge-current {
+      background: rgba(168,85,247,0.15);
+      border: 1px solid rgba(168,85,247,0.35);
+      color: #d8b4fe;
+    }
+
+    .timeline-date {
+      font-size: 0.78em;
+      color: #6b6b8a;
+    }
+
+    .timeline-title {
+      font-size: 1.05em;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 4px;
+    }
+
+    .timeline-place {
+      font-size: 0.85em;
+      color: #a855f7;
+      margin-bottom: 10px;
+    }
+
+    .timeline-desc {
+      font-size: 0.88em;
+      color: #9d9db5;
+      line-height: 1.7;
+    }
+
+    /* ================= MOBILE ================= */
+    @media (max-width: 600px) {
+      main { padding: 48px 16px 80px; }
+      .timeline { padding-left: 20px; }
+      .timeline-card { flex-direction: column; gap: 14px; padding: 20px; }
+      .timeline-dot { left: -27px; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAVBAR JS ================= -->
+  <script src="../js/navbar.js"></script>
+  <!-- ================================================= -->
+
+
+  <!-- ===================== STARS JS ================= -->
+  <script src="../js/stars.js"></script>
+  <!-- ================================================= -->
+
+
+  <!-- ==================== CONTENU ==================== -->
+  <main>
+    <p class="heading-tag">✦ Qui suis-je</p>
+    <h1>Mon parcours</h1>
+
+    <div class="timeline">
+
+      <!-- ITEM 1 : ORIF Aigle (en cours) -->
+      <div class="timeline-item">
+        <div class="timeline-dot current"></div>
+        <div class="timeline-card">
+          <div class="timeline-logo">
+            <img src="https://www.orif.ch/fileadmin/user_upload/orif/Media/ORIF_logo_big.jpg"
+                 alt="ORIF"
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='🏢';">
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-meta">
+              <span class="badge badge-current">En cours</span>
+              <span class="timeline-date">Août 2022 — aujourd'hui</span>
+            </div>
+            <div class="timeline-title">Apprenti Informaticien – Infrastructure</div>
+            <div class="timeline-place">ORIF — Aigle</div>
+            <p class="timeline-desc">
+              Apprentissage CFC 4 ans en informatique d'infrastructure — administration systèmes, réseaux, virtualisation, Active Directory, support utilisateur N1/N2 et déploiement de postes.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 2 : EPSIC (en cours) -->
+      <div class="timeline-item">
+        <div class="timeline-dot current"></div>
+        <div class="timeline-card">
+          <div class="timeline-logo">
+            <img src="https://www.epsic.ch/wp-content/uploads/2022/05/Logo-EPSIC.png"
+                 alt="EPSIC"
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='🎓';">
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-meta">
+              <span class="badge badge-current">En cours</span>
+              <span class="timeline-date">Août 2022 — aujourd'hui</span>
+            </div>
+            <div class="timeline-title">CFC Informaticien en infrastructure</div>
+            <div class="timeline-place">EPSIC — Lausanne</div>
+            <p class="timeline-desc">
+              École professionnelle liée à l'apprentissage — cours théoriques en réseaux, systèmes, sécurité et infrastructure IT.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 3 : Stage Haut-Lac -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-logo">
+            <img src="https://haut-lac.ch/wp-content/uploads/2025/12/Haut-Lac-Ecole-International-Suisse.jpg"
+                 alt="Haut-Lac"
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='💼';">
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-meta">
+              <span class="badge badge-pro">Stage</span>
+              <span class="timeline-date">Février 2025 · 2 semaines</span>
+            </div>
+            <div class="timeline-title">Stage Informaticien</div>
+            <div class="timeline-place">Haut-Lac — Saint-Légier</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 4 : Stage CIMO Septembre 2024 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-logo">
+            <img src="https://www.cimo.ch/wp-content/uploads/2021/01/CIMO_logo_quadri.svg"
+                 alt="CIMO"
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='💼';">
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-meta">
+              <span class="badge badge-pro">Stage</span>
+              <span class="timeline-date">Septembre 2024 · 1 mois</span>
+            </div>
+            <div class="timeline-title">Stage Informaticien</div>
+            <div class="timeline-place">CIMO — Monthey</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 5 : Stage CIMO Juin 2024 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-logo">
+            <img src="https://www.cimo.ch/wp-content/uploads/2021/01/CIMO_logo_quadri.svg"
+                 alt="CIMO"
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='💼';">
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-meta">
+              <span class="badge badge-pro">Stage</span>
+              <span class="timeline-date">Juin 2024 · 1 mois</span>
+            </div>
+            <div class="timeline-title">Stage Informaticien</div>
+            <div class="timeline-place">CIMO — Monthey</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 6 : Stage SOI Lausanne -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-logo">
+            <img src="https://www.lausanne.ch/ressources/decimuni/file/7725.jpg"
+                 alt="SOI Ville de Lausanne"
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='💼';">
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-meta">
+              <span class="badge badge-pro">Stage</span>
+              <span class="timeline-date">Février 2024 · 2 mois</span>
+            </div>
+            <div class="timeline-title">Stage Informaticien</div>
+            <div class="timeline-place">SOI Ville de Lausanne — Lausanne</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 7 : Stage Service IT ORIF Péveranges -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-logo">
+            <img src="https://www.orif.ch/fileadmin/user_upload/orif/Media/ORIF_logo_big.jpg"
+                 alt="ORIF"
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='💼';">
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-meta">
+              <span class="badge badge-pro">Stage</span>
+              <span class="timeline-date">Février 2023 · 3 mois</span>
+            </div>
+            <div class="timeline-title">Stage Informaticien</div>
+            <div class="timeline-place">Service IT ORIF — Péveranges</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 8 : Stage section IT ORIF Aigle -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-logo">
+            <img src="https://www.orif.ch/fileadmin/user_upload/orif/Media/ORIF_logo_big.jpg"
+                 alt="ORIF"
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='💼';">
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-meta">
+              <span class="badge badge-pro">Stage</span>
+              <span class="timeline-date">Mars 2022 · 4 jours</span>
+            </div>
+            <div class="timeline-title">Stage Informaticien</div>
+            <div class="timeline-place">Section IT ORIF — Aigle</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 9 : Stage ETML -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-logo">
+            <img src="https://www.etml.ch/themes/etml/assets/images/etml_logo_simple.svg"
+                 alt="ETML"
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='🔧';">
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-meta">
+              <span class="badge badge-pro">Stage</span>
+              <span class="timeline-date">Novembre 2021 · 2 jours</span>
+            </div>
+            <div class="timeline-title">Stage Électronique / Informatique</div>
+            <div class="timeline-place">ETML — Lausanne</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 10 : Stage mécanicien automobile -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-logo">
+            <img src="https://scontent.fqls3-1.fna.fbcdn.net/v/t39.30808-6/291365507_531567775334594_6503780040442020417_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=mc5oQQmTHUoQ7kNvwFdL5et&_nc_oc=Adp3m6ILUbb_p7kVJlY3PRMLoPiIZDWyD_-vQC7tXDxvhNtL-RBnOovPuBLrtuRk3qr0iBFGdMmvENPw_d7lzjU0&_nc_zt=23&_nc_ht=scontent.fqls3-1.fna&_nc_gid=klKaAF6yfTU1x8HVEhDTAA&_nc_ss=7d289&oh=00_Af0mm9dRjcx0teFcc15WIZ0v5d5rAcJf68y3lqcz1uXHBg&oe=69F3B406"
+                 alt="Garage de la Fontaine"
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='🔧';">
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-meta">
+              <span class="badge badge-autre">Stage</span>
+              <span class="timeline-date">Mars 2021 · 5 jours</span>
+            </div>
+            <div class="timeline-title">Stage Mécanicien Automobile</div>
+            <div class="timeline-place">Garage de la Fontaine — Aigle</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 11 : Vendanges -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-logo" style="background:#1a1a2e;padding:10px;">🍇</div>
+          <div class="timeline-content">
+            <div class="timeline-meta">
+              <span class="badge badge-pro">Travail auxiliaire</span>
+              <span class="timeline-date">2019 → présent · Saisonnier</span>
+            </div>
+            <div class="timeline-title">Vendanges saisonnières</div>
+            <div class="timeline-place">Yvorne</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 12 : EPS Aigle -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Logo_canton_de_Vaud.svg/500px-Logo_canton_de_Vaud.svg.png"
+                 alt="EPS Aigle"
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='🏫';">
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-meta">
+              <span class="badge badge-formation">Formation</span>
+              <span class="timeline-date">Juin 2022</span>
+            </div>
+            <div class="timeline-title">Certificat d'études secondaires VG</div>
+            <div class="timeline-place">EPS — Aigle</div>
+            <p class="timeline-desc">Obtention du certificat de fin de scolarité obligatoire, voie générale. Prix du mérite.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  <!-- ================================================= -->
+
+
+  <!-- ===================== FOOTER JS ================= -->
+  <script src="../js/footer.js"></script>
+  <!-- ================================================= -->
+
+  <!-- ===================== SCRIPTS =================== -->
+<!-- ================================================= -->
+
+</body>
+</html>

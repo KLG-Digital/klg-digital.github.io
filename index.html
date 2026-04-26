@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KLG Digital</title>
+  <link rel="icon" type="image/png" href="Images/KLG-Digital-blanc.png">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ── PLANÈTES EN CERCLE — spécifique à cette page ── */
+    :root {
+      --radius:        clamp(90px, 22vmin, 160px);
+      --planet-size:   clamp(70px, 16vmin, 110px);
+      --planet-offset: calc(var(--planet-size) / 2);
+    }
+
+    .orbit-container {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width:  calc(var(--radius) * 2 + var(--planet-size));
+      height: calc(var(--radius) * 2 + var(--planet-size));
+    }
+
+    .planet {
+      position: absolute;
+      width:  var(--planet-size);
+      height: var(--planet-size);
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #a855f7, #4c1d95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: clamp(0.65em, 2.5vmin, 0.9em);
+      line-height: 1.4;
+      animation: float 6s ease-in-out infinite;
+      animation-delay: calc(var(--i) * 1.5s);
+      transition: box-shadow 0.3s, filter 0.3s;
+      left: calc(50% + var(--radius) * cos(calc(var(--i) * 90deg - 90deg)) - var(--planet-offset));
+      top:  calc(50% + var(--radius) * sin(calc(var(--i) * 90deg - 90deg)) - var(--planet-offset));
+    }
+
+    .planet:hover {
+      box-shadow: 0 0 25px #9333ea;
+      filter: brightness(1.15);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(clamp(-6px, -2vmin, -12px)); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAVBAR JS ================= -->
+  <script src="js/navbar.js"></script>
+  <!-- ================================================= -->
+
+  <!-- ===================== STARS JS ================== -->
+  <script src="js/stars.js"></script>
+  <!-- ================================================= -->
+
+
+  <!-- ====================== HERO ====================== -->
+  <header class="hero">
+
+    <!-- PLANÈTES EN CERCLE FIXE -->
+    <div class="orbit-container">
+      <a href="pages/it.html"     class="planet" style="--i:0">💻<br>IT</a>
+      <a href="pages/video.html"  class="planet" style="--i:1">🎬<br>Video</a>
+      <a href="pages/photo.html"  class="planet" style="--i:2">📸<br>Photo</a>
+      <a href="pages/acting.html" class="planet" style="--i:3">🎭<br>Acting</a>
+    </div>
+
+  </header>
+  <!-- ================================================= -->
+
+
+  <!-- ===================== FOOTER JS ================= -->
+  <script src="js/footer.js"></script>
+  <!-- ================================================= -->
+
+</body>
+</html>

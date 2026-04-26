@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #07071a;
+    color: white;
+    /* Empêche tout débordement horizontal */
+    overflow-x: hidden;
+}
+
+/* ================= CANVAS ÉTOILES ================= */
+
+#starCanvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ================= HEADER ================= */
+
+.hero {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    /* Padding fluide : réduit automatiquement sur petit écran */
+    padding: 20px clamp(16px, 4vw, 40px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background: rgba(7, 7, 26, 0.7);
+    backdrop-filter: blur(10px);
+}
+
+.navbar a {
+    color: white;
+}
+
+.navbar a:hover {
+    color: #a855f7;
+}
+
+/* Logo image */
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    /* Hauteur fluide entre 28px (iPhone 4S) et 40px (desktop) */
+    height: clamp(28px, 5vw, 40px);
+    width: auto;
+    max-width: clamp(120px, 30vw, 180px);
+    display: block;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    /* Gap fluide entre les liens */
+    gap: clamp(12px, 2vw, 25px);
+}
+
+/* Lien actif (page courante) */
+.nav-links .active {
+    color: #a855f7;
+}
+
+/* ================= HAMBURGER ================= */
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 200;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+    transition: transform 0.35s ease, opacity 0.25s ease;
+    transform-origin: center;
+}
+
+/* Animation hamburger → croix */
+.menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ================= MOBILE ================= */
+
+@media screen and (max-width: 768px) {
+
+    .navbar {
+        padding: 16px 20px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(7,7,26,0.95);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(-100%);
+        transition: transform 0.5s ease;
+    }
+
+    .nav-links.mobile-menu {
+        transform: translateX(0);
+    }
+
+    /* Taille des liens fluide dans le menu mobile */
+    .nav-links li {
+        margin: clamp(10px, 3vh, 20px) 0;
+        font-size: clamp(1.1em, 4vw, 1.5em);
+    }
+}
+
+/* ================= TRÈS PETITS ÉCRANS (iPhone 4S — 320px) ================= */
+
+@media screen and (max-width: 360px) {
+
+    .logo-img {
+        max-width: 110px;
+    }
+
+    .nav-links li {
+        margin: 8px 0;
+    }
+}
+
+/* ================= FOOTER ================= */
+
+.site-footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid rgba(168,85,247,0.15);
+    padding: clamp(20px, 3vw, 32px) clamp(16px, 4vw, 40px);
+}
+
+.footer-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.footer-copy {
+    font-size: 0.8em;
+    color: #6b6b8a;
+}
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8em;
+}
+
+.footer-links a {
+    color: #6b6b8a;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover { color: #a855f7; }
+
+.footer-sep { color: #3d3d5c; }
+
+@media (max-width: 600px) {
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+}

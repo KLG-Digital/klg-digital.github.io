@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acting — KLG Digital</title>
+  <link rel="icon" type="image/png" href="../Images/KLG-Digital-blanc.png">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    #starCanvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+    main { position: relative; z-index: 1; max-width: 960px; margin: 0 auto; padding: 80px 24px 120px; }
+    .heading-tag { font-size: 0.75em; letter-spacing: 0.2em; text-transform: uppercase; color: #a855f7; margin-bottom: 16px; }
+    h1 { font-size: clamp(2em,5vw,3.2em); font-weight: 800; color: white; margin-bottom: 16px; }
+    .subtitle { color: #6b6b8a; font-size: 1em; line-height: 1.7; margin-bottom: 56px; max-width: 520px; }
+    .section-title { font-size: 0.72em; letter-spacing: 0.18em; text-transform: uppercase; color: #a855f7; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: rgba(168,85,247,0.2); }
+
+    /* ── PROJETS ── */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; margin-bottom: 64px; }
+    .project-card { background: rgba(255,255,255,0.03); border: 1px dashed rgba(168,85,247,0.25); border-radius: 20px; overflow: hidden; transition: border-color 0.3s, transform 0.3s; }
+    .project-card:hover { border-color: rgba(168,85,247,0.4); transform: translateY(-4px); }
+    .project-thumb { width: 100%; aspect-ratio: 16/9; background: rgba(168,85,247,0.05); display: flex; align-items: center; justify-content: center; font-size: 3em; color: rgba(168,85,247,0.3); }
+    .project-body { padding: 18px 22px; }
+    .project-name { font-size: 0.95em; font-weight: 700; color: white; margin-bottom: 4px; }
+    .project-meta { font-size: 0.75em; color: #6b6b8a; margin-bottom: 8px; }
+    .project-desc { font-size: 0.82em; color: #9d9db5; line-height: 1.6; }
+
+    .cta-contact { display: flex; align-items: center; justify-content: space-between; gap: 24px; background: rgba(168,85,247,0.06); border: 1px solid rgba(168,85,247,0.25); border-radius: 16px; padding: 28px 32px; flex-wrap: wrap; }
+    .cta-text { font-size: 1em; font-weight: 700; color: white; margin-bottom: 4px; }
+    .cta-sub { font-size: 0.85em; color: #6b6b8a; }
+    .btn-cta { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: linear-gradient(135deg, #7c3aed, #a855f7); border-radius: 10px; color: white; font-size: 0.88em; font-weight: 700; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; white-space: nowrap; flex-shrink: 0; }
+    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(168,85,247,0.4); }
+
+    @media (max-width: 600px) { main { padding: 48px 16px 80px; } .projects-grid { grid-template-columns: 1fr; } .cta-contact { flex-direction: column; align-items: flex-start; } }
+  </style>
+</head>
+<body>
+  <script src="../js/navbar.js"></script>
+  <script src="../js/stars.js"></script>
+
+  <main>
+    <p class="heading-tag">🎭 Spécialité</p>
+    <h1>Acting</h1>
+    <p class="subtitle">Projets, rôles et participations — un aperçu de mon parcours dans le domaine du jeu et de la performance.</p>
+
+    <div class="section-title">Projets &amp; participations</div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-thumb">🎭</div>
+        <div class="project-body">
+          <div class="project-name">À venir</div>
+          <div class="project-meta">— · —</div>
+          <p class="project-desc">Les projets et participations seront ajoutés prochainement.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-thumb">🎭</div>
+        <div class="project-body">
+          <div class="project-name">À venir</div>
+          <div class="project-meta">— · —</div>
+          <p class="project-desc">Les projets et participations seront ajoutés prochainement.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-thumb">🎭</div>
+        <div class="project-body">
+          <div class="project-name">À venir</div>
+          <div class="project-meta">— · —</div>
+          <p class="project-desc">Les projets et participations seront ajoutés prochainement.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-contact">
+      <div><div class="cta-text">Un projet en tête ?</div><div class="cta-sub">Un souci ? Me voici. Je réponds sous 48h.</div></div>
+      <a href="contact.html" class="btn-cta">Me contacter →</a>
+    </div>
+  </main>
+
+  <script src="../js/footer.js"></script>
+</body>
+</html>

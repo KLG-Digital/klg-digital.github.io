@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — KLG Digital</title>
+  <link rel="icon" type="image/png" href="../Images/KLG-Digital-blanc.png">
+  <link rel="stylesheet" href="../style.css">
+
+  <style>
+
+    /* ================= CANVAS ÉTOILES ================= */
+    #starCanvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ================= CONTENU ================= */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 80px 24px 120px;
+    }
+
+    .heading-tag {
+      font-size: 0.75em;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #a855f7;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2em, 5vw, 3.2em);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      color: white;
+    }
+
+    .subtitle {
+      color: #6b6b8a;
+      font-size: 1em;
+      line-height: 1.7;
+      margin-bottom: 72px;
+      max-width: 520px;
+    }
+
+    /* ================= BADGE TAUX HORAIRE ================= */
+    .rate-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(168,85,247,0.1);
+      border: 1px solid rgba(168,85,247,0.3);
+      border-radius: 12px;
+      padding: 12px 20px;
+      margin-bottom: 48px;
+      font-size: 0.88em;
+      color: #c4b5fd;
+    }
+
+    .rate-banner strong {
+      color: white;
+      font-size: 1.1em;
+    }
+
+    /* ================= CATÉGORIE ================= */
+    .category {
+      margin-bottom: 56px;
+    }
+
+    .category-title {
+      font-size: 0.72em;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #a855f7;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .category-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(168,85,247,0.2);
+    }
+
+    /* ================= GRILLE SERVICES ================= */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    /* ================= CARTE SERVICE ================= */
+    .service-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(168,85,247,0.15);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: border-color 0.3s, background 0.3s, transform 0.3s;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      cursor: pointer;
+      color: inherit;
+    }
+
+    .service-more {
+      font-size: 0.78em;
+      color: #a855f7;
+      margin-top: 4px;
+    }
+
+    .service-card:hover {
+      border-color: rgba(168,85,247,0.4);
+      background: rgba(168,85,247,0.04);
+      transform: translateY(-3px);
+    }
+
+    /* Ligne lumineuse au hover */
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(168,85,247,0.6), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .service-card:hover::before { opacity: 1; }
+
+    .service-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .service-icon { font-size: 1.5em; flex-shrink: 0; }
+
+    /* Badge tarif */
+    .service-price {
+      font-size: 0.75em;
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .price-fixed {
+      color: #86efac;
+      background: rgba(134,239,172,0.08);
+      border: 1px solid rgba(134,239,172,0.2);
+      border-radius: 20px;
+      padding: 3px 10px;
+    }
+
+    .price-demand {
+      color: #c4b5fd;
+      background: rgba(168,85,247,0.1);
+      border: 1px solid rgba(168,85,247,0.2);
+      border-radius: 20px;
+      padding: 3px 10px;
+    }
+
+    .service-name {
+      font-size: 0.98em;
+      font-weight: 700;
+      color: white;
+    }
+
+    .service-desc {
+      font-size: 0.83em;
+      color: #9d9db5;
+      line-height: 1.6;
+    }
+
+    /* ================= CTA ================= */
+    .cta-contact {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      background: rgba(168,85,247,0.06);
+      border: 1px solid rgba(168,85,247,0.25);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-top: 64px;
+      flex-wrap: wrap;
+    }
+
+    .cta-text { font-size: 1em; font-weight: 700; color: white; margin-bottom: 4px; }
+    .cta-sub  { font-size: 0.85em; color: #6b6b8a; }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #7c3aed, #a855f7);
+      border-radius: 10px;
+      color: white;
+      font-size: 0.88em;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(168,85,247,0.4);
+    }
+
+    /* ================= MOBILE ================= */
+    @media (max-width: 600px) {
+      main { padding: 48px 16px 80px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .cta-contact { flex-direction: column; align-items: flex-start; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAVBAR JS ================= -->
+  <script src="../js/navbar.js"></script>
+  <!-- ================================================= -->
+
+  <!-- ===================== STARS JS ================== -->
+  <script src="../js/stars.js"></script>
+  <!-- ================================================= -->
+
+
+  <!-- ==================== CONTENU ==================== -->
+  <main>
+    <p class="heading-tag">✦ Ce que je propose</p>
+    <h1>Services</h1>
+    <p class="subtitle">Un souci ? Me voici. Des prestations adaptées à vos besoins, du dépannage rapide aux projets sur mesure.</p>
+
+    <!-- TAUX HORAIRE -->
+    <div class="rate-banner">
+      ⏱ Taux horaire IT : <strong>55.- CHF / heure</strong> · Déplacement selon distance
+    </div>
+
+    <!-- ── CATÉGORIE IT & INFRASTRUCTURE ── -->
+    <div class="category">
+      <div class="category-title">💻 IT &amp; Infrastructure</div>
+      <div class="services-grid">
+
+        <a href="service-detail.html?id=support" class="service-card">
+          <div class="service-header">
+            <span class="service-icon">🛠️</span>
+            <span class="service-price price-fixed">55.- / h</span>
+          </div>
+          <div class="service-name">Support informatique</div>
+          <p class="service-desc">Dépannage N1 et N2, diagnostic et résolution de pannes logicielles ou matérielles.</p>
+          <span class="service-more">Voir le détail →</span>
+        </a>
+
+        <a href="service-detail.html?id=maintenance" class="service-card">
+          <div class="service-header">
+            <span class="service-icon">🔧</span>
+            <span class="service-price price-fixed">55.- / h</span>
+          </div>
+          <div class="service-name">Maintenance PC</div>
+          <p class="service-desc">Nettoyage système, mise à jour, optimisation des performances et vérification matérielle.</p>
+          <span class="service-more">Voir le détail →</span>
+        </a>
+
+        <a href="service-detail.html?id=montage-pc" class="service-card">
+          <div class="service-header">
+            <span class="service-icon">🖥️</span>
+            <span class="service-price price-demand">Sur demande</span>
+          </div>
+          <div class="service-name">Montage PC sur mesure</div>
+          <p class="service-desc">Sélection des composants, assemblage et configuration selon votre budget et vos besoins.</p>
+          <span class="service-more">Voir le détail →</span>
+        </a>
+
+        <a href="service-detail.html?id=upgrade" class="service-card">
+          <div class="service-header">
+            <span class="service-icon">⚡</span>
+            <span class="service-price price-fixed">55.- / h + matériel</span>
+          </div>
+          <div class="service-name">Upgrade matériel</div>
+          <p class="service-desc">Ajout de RAM, remplacement de disque, installation de carte graphique ou autre composant.</p>
+          <span class="service-more">Voir le détail →</span>
+        </a>
+
+        <a href="service-detail.html?id=parc" class="service-card">
+          <div class="service-header">
+            <span class="service-icon">🏢</span>
+            <span class="service-price price-demand">Sur demande</span>
+          </div>
+          <div class="service-name">Renouvellement parc informatique</div>
+          <p class="service-desc">Audit, recommandation, migration et déploiement de nouveaux postes en entreprise.</p>
+          <span class="service-more">Voir le détail →</span>
+        </a>
+
+        <a href="service-detail.html?id=conseils" class="service-card">
+          <div class="service-header">
+            <span class="service-icon">💡</span>
+            <span class="service-price price-fixed">55.- / h</span>
+          </div>
+          <div class="service-name">Conseils &amp; accompagnement</div>
+          <p class="service-desc">Aide à la décision, audit de votre infrastructure et recommandations personnalisées.</p>
+          <span class="service-more">Voir le détail →</span>
+        </a>
+
+        <a href="service-detail.html?id=cours" class="service-card">
+          <div class="service-header">
+            <span class="service-icon">📚</span>
+            <span class="service-price price-fixed">50.- / h</span>
+          </div>
+          <div class="service-name">Cours informatique</div>
+          <p class="service-desc">Formation personnalisée sur l'utilisation de votre ordinateur, logiciels ou outils bureautiques.</p>
+          <span class="service-more">Voir le détail →</span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ── CATÉGORIE CRÉATION & MÉDIA ── -->
+    <div class="category">
+      <div class="category-title">🎨 Création &amp; Média</div>
+      <div class="services-grid">
+
+        <a href="service-detail.html?id=montage-photo" class="service-card">
+          <div class="service-header">
+            <span class="service-icon">📸</span>
+            <span class="service-price price-demand">Sur demande</span>
+          </div>
+          <div class="service-name">Montage photo</div>
+          <p class="service-desc">Retouche, correction colorimétrique, compositing et traitement de lots d'images.</p>
+          <span class="service-more">Voir le détail →</span>
+        </a>
+
+        <a href="service-detail.html?id=montage-video" class="service-card">
+          <div class="service-header">
+            <span class="service-icon">🎬</span>
+            <span class="service-price price-demand">Sur demande</span>
+          </div>
+          <div class="service-name">Montage vidéo</div>
+          <p class="service-desc">Montage, étalonnage, habillage et export selon vos formats et plateformes cibles.</p>
+          <span class="service-more">Voir le détail →</span>
+        </a>
+
+        <a href="service-detail.html?id=logo" class="service-card">
+          <div class="service-header">
+            <span class="service-icon">✏️</span>
+            <span class="service-price price-demand">Sur demande</span>
+          </div>
+          <div class="service-name">Création logo</div>
+          <p class="service-desc">Conception d'identité visuelle adaptée à votre image et vos supports de communication.</p>
+          <span class="service-more">Voir le détail →</span>
+        </a>
+
+        <a href="service-detail.html?id=media" class="service-card">
+          <div class="service-header">
+            <span class="service-icon">🎭</span>
+            <span class="service-price price-demand">Sur demande</span>
+          </div>
+          <div class="service-name">Création média</div>
+          <p class="service-desc">Affiches, visuels réseaux sociaux, bannières et tout support graphique selon la demande.</p>
+          <span class="service-more">Voir le détail →</span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-contact">
+      <div>
+        <div class="cta-text">Un projet en tête ?</div>
+        <div class="cta-sub">Un souci ? Me voici. Décrivez votre besoin et je vous réponds sous 48h.</div>
+      </div>
+      <a href="../pages/contact.html" class="btn-cta">Demander un devis →</a>
+    </div>
+
+  </main>
+  <!-- ================================================= -->
+
+
+  <!-- ===================== FOOTER JS ================= -->
+  <script src="../js/footer.js"></script>
+  <!-- ================================================= -->
+
+</body>
+</html>

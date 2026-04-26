@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service — KLG Digital</title>
+  <link rel="icon" type="image/png" href="../Images/KLG-Digital-blanc.png">
+  <link rel="stylesheet" href="../style.css">
+
+  <style>
+
+    /* ================= CANVAS ÉTOILES ================= */
+    #starCanvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ================= CONTENU ================= */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 80px 24px 120px;
+    }
+
+    /* Lien retour */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #6b6b8a;
+      text-decoration: none;
+      font-size: 0.85em;
+      margin-bottom: 40px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #a855f7; }
+    .back-link::before { content: '←'; }
+
+    .heading-tag {
+      font-size: 0.75em;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #a855f7;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2em, 5vw, 3em);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 12px;
+      color: white;
+    }
+
+    /* Badge tarif */
+    .price-badge {
+      display: inline-block;
+      font-size: 0.88em;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 40px;
+    }
+
+    .price-fixed {
+      color: #86efac;
+      background: rgba(134,239,172,0.08);
+      border: 1px solid rgba(134,239,172,0.2);
+    }
+
+    .price-demand {
+      color: #c4b5fd;
+      background: rgba(168,85,247,0.1);
+      border: 1px solid rgba(168,85,247,0.2);
+    }
+
+    /* Carte description */
+    .detail-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(168,85,247,0.15);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .detail-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(168,85,247,0.5), transparent);
+    }
+
+    .detail-card h2 {
+      font-size: 0.85em;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .detail-card p {
+      font-size: 0.92em;
+      color: #9d9db5;
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .detail-card ul {
+      padding-left: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .detail-card li {
+      font-size: 0.88em;
+      color: #9d9db5;
+      line-height: 1.6;
+      display: flex;
+      gap: 10px;
+    }
+
+    .detail-card li::before {
+      content: '✦';
+      color: #a855f7;
+      flex-shrink: 0;
+      font-size: 0.8em;
+      margin-top: 2px;
+    }
+
+    /* CTA */
+    .cta-contact {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      background: rgba(168,85,247,0.06);
+      border: 1px solid rgba(168,85,247,0.25);
+      border-radius: 16px;
+      padding: 28px 32px;
+      flex-wrap: wrap;
+    }
+
+    .cta-text { font-size: 1em; font-weight: 700; color: white; margin-bottom: 4px; }
+    .cta-sub  { font-size: 0.85em; color: #6b6b8a; }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #7c3aed, #a855f7);
+      border-radius: 10px;
+      color: white;
+      font-size: 0.88em;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(168,85,247,0.4);
+    }
+
+    @media (max-width: 600px) {
+      main { padding: 48px 16px 80px; }
+      .detail-card { padding: 20px; }
+      .cta-contact { flex-direction: column; align-items: flex-start; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAVBAR JS ================= -->
+  <script src="../js/navbar.js"></script>
+  <!-- ================================================= -->
+
+  <!-- ===================== STARS JS ================== -->
+  <script src="../js/stars.js"></script>
+  <!-- ================================================= -->
+
+
+  <!-- ==================== CONTENU ==================== -->
+  <main id="detail-main">
+    <a href="javascript:history.back()" class="back-link">Retour</a>
+    <div id="detail-content"><!-- Chargé dynamiquement --></div>
+    <div class="cta-contact">
+      <div>
+        <div class="cta-text">Intéressé par ce service ?</div>
+        <div class="cta-sub">Un souci ? Me voici. Je réponds sous 48h.</div>
+      </div>
+      <a href="contact.html" class="btn-cta">Me contacter →</a>
+    </div>
+  </main>
+  <!-- ================================================= -->
+
+
+  <!-- ===================== FOOTER JS ================= -->
+  <script src="../js/footer.js"></script>
+  <!-- ================================================= -->
+
+
+  <!-- ===================== SCRIPT ==================== -->
+  <script>
+
+    // ── Données des services ─────────────────────────────────
+    const services = {
+      'support': {
+        tag: '🛠️ IT & Infrastructure',
+        title: 'Support informatique',
+        price: '55.- CHF / heure',
+        priceClass: 'price-fixed',
+        description: 'Un problème logiciel ou matériel ? J\'interviens rapidement pour diagnostiquer et résoudre vos pannes, à distance ou sur site.',
+        includes: [
+          'Diagnostic complet du problème',
+          'Résolution logicielle (virus, lenteurs, erreurs système)',
+          'Résolution matérielle (périphériques, connexions, pannes)',
+          'Support à distance disponible',
+          'Rapport d\'intervention sur demande',
+        ],
+        note: 'Facturation à la demi-heure. Déplacement selon distance.'
+      },
+      'maintenance': {
+        tag: '🔧 IT & Infrastructure',
+        title: 'Maintenance PC',
+        price: '55.- CHF / heure',
+        priceClass: 'price-fixed',
+        description: 'Un entretien régulier de votre PC garantit des performances optimales et une durée de vie prolongée.',
+        includes: [
+          'Nettoyage des fichiers temporaires et du registre',
+          'Mise à jour du système d\'exploitation et des drivers',
+          'Vérification de l\'état des disques (SMART)',
+          'Optimisation du démarrage',
+          'Vérification thermique et nettoyage physique si nécessaire',
+        ],
+        note: 'Facturation à la demi-heure.'
+      },
+      'montage-pc': {
+        tag: '🖥️ IT & Infrastructure',
+        title: 'Montage PC sur mesure',
+        price: 'Sur demande',
+        priceClass: 'price-demand',
+        description: 'Je sélectionne les composants adaptés à votre usage et votre budget, puis j\'assemble et configure entièrement votre machine.',
+        includes: [
+          'Analyse de vos besoins et de votre budget',
+          'Sélection des composants compatibles et optimisés',
+          'Assemblage complet du PC',
+          'Installation du système d\'exploitation',
+          'Tests de stabilité et de performance',
+          'Livraison et mise en service sur place',
+        ],
+        note: 'Le prix dépend des composants choisis. Devis gratuit sur demande.'
+      },
+      'upgrade': {
+        tag: '⚡ IT & Infrastructure',
+        title: 'Upgrade matériel',
+        price: '55.- CHF / heure + matériel',
+        priceClass: 'price-fixed',
+        description: 'Donnez une seconde vie à votre PC en remplaçant ou ajoutant des composants clés pour booster les performances.',
+        includes: [
+          'Ajout ou remplacement de RAM',
+          'Remplacement du disque dur par un SSD',
+          'Installation d\'une carte graphique',
+          'Remplacement du processeur',
+          'Vérification de compatibilité avant intervention',
+          'Tests post-installation',
+        ],
+        note: 'Le matériel est facturé séparément au prix d\'achat. Conseil d\'achat gratuit.'
+      },
+      'parc': {
+        tag: '🏢 IT & Infrastructure',
+        title: 'Renouvellement parc informatique',
+        price: 'Sur demande',
+        priceClass: 'price-demand',
+        description: 'Vous souhaitez moderniser votre parc informatique en entreprise ? Je prends en charge l\'audit, le conseil, la migration et le déploiement.',
+        includes: [
+          'Audit de l\'existant',
+          'Recommandation de matériel adapté à votre activité',
+          'Déploiement des nouveaux postes',
+          'Migration des données et des profils utilisateurs',
+          'Configuration réseau et domaine',
+          'Formation des utilisateurs sur demande',
+        ],
+        note: 'Devis personnalisé selon le nombre de postes et la complexité.'
+      },
+      'conseils': {
+        tag: '💡 IT & Infrastructure',
+        title: 'Conseils & accompagnement',
+        price: '55.- CHF / heure',
+        priceClass: 'price-fixed',
+        description: 'Vous avez un projet ou une décision technique à prendre ? Je vous accompagne avec un regard professionnel et des conseils concrets.',
+        includes: [
+          'Audit de votre infrastructure existante',
+          'Recommandations personnalisées et documentées',
+          'Aide au choix de matériel ou de logiciels',
+          'Accompagnement dans la mise en place de solutions',
+          'Suivi disponible après intervention',
+        ],
+        note: 'Première consultation de 30 minutes offerte.'
+      },
+      'cours': {
+        tag: '📚 IT & Infrastructure',
+        title: 'Cours informatique',
+        price: '50.- CHF / heure',
+        priceClass: 'price-fixed',
+        description: 'Vous voulez mieux maîtriser votre ordinateur ou apprendre à utiliser un logiciel ? Des cours adaptés à votre niveau et à votre rythme.',
+        includes: [
+          'Initiation à l\'utilisation de Windows / macOS',
+          'Maîtrise des logiciels bureautiques (Word, Excel, etc.)',
+          'Navigation internet sécurisée',
+          'Gestion des fichiers et sauvegardes',
+          'Introduction à la cybersécurité',
+          'Cours personnalisés selon vos besoins',
+        ],
+        note: 'Cours à domicile ou à distance. Rythme adapté à votre niveau.'
+      },
+      'montage-photo': {
+        tag: '📸 Création & Média',
+        title: 'Montage photo',
+        price: 'Sur demande',
+        priceClass: 'price-demand',
+        description: 'Retouche, correction colorimétrique et traitement de vos images pour un rendu professionnel.',
+        includes: [
+          'Retouche et correction colorimétrique',
+          'Suppression d\'éléments indésirables',
+          'Traitement de lots d\'images',
+          'Export dans les formats souhaités',
+          'Livrables en haute résolution',
+        ],
+        note: 'Tarif selon volume et complexité. Devis gratuit sur demande.'
+      },
+      'montage-video': {
+        tag: '🎬 Création & Média',
+        title: 'Montage vidéo',
+        price: 'Sur demande',
+        priceClass: 'price-demand',
+        description: 'Montage, étalonnage et habillage de vos vidéos pour un résultat soigné, adapté à votre plateforme cible.',
+        includes: [
+          'Montage et cut du rush',
+          'Étalonnage colorimétrique',
+          'Ajout de textes, titres et transitions',
+          'Habillage sonore et mixage',
+          'Export selon la plateforme (YouTube, Instagram, etc.)',
+        ],
+        note: 'Tarif selon durée et complexité du projet. Devis gratuit sur demande.'
+      },
+      'logo': {
+        tag: '✏️ Création & Média',
+        title: 'Création logo',
+        price: 'Sur demande',
+        priceClass: 'price-demand',
+        description: 'Conception d\'une identité visuelle qui vous ressemble, adaptée à vos supports de communication.',
+        includes: [
+          'Brief et analyse de vos besoins',
+          'Propositions de concepts',
+          'Révisions jusqu\'à validation',
+          'Livraison en formats vectoriels et PNG',
+          'Charte graphique simplifiée sur demande',
+        ],
+        note: 'Devis personnalisé selon la complexité du projet.'
+      },
+      'media': {
+        tag: '🎭 Création & Média',
+        title: 'Création média',
+        price: 'Sur demande',
+        priceClass: 'price-demand',
+        description: 'Affiches, visuels réseaux sociaux, bannières et tout support graphique conçu selon vos besoins.',
+        includes: [
+          'Affiches et flyers',
+          'Visuels pour réseaux sociaux',
+          'Bannières web',
+          'Supports de présentation',
+          'Tout autre support graphique sur demande',
+        ],
+        note: 'Tarif selon le nombre de visuels et la complexité. Devis gratuit.'
+      },
+    };
+
+    // ── Charger le bon service selon l'ID dans l'URL ─────────
+    const params  = new URLSearchParams(window.location.search);
+    const id      = params.get('id');
+    const service = services[id];
+    const content = document.getElementById('detail-content');
+
+    if (service) {
+      document.title = `${service.title} — KLG Digital`;
+      content.innerHTML = `
+        <p class="heading-tag">${service.tag}</p>
+        <h1>${service.title}</h1>
+        <span class="price-badge ${service.priceClass}">${service.price}</span>
+
+        <div class="detail-card">
+          <h2>Description</h2>
+          <p>${service.description}</p>
+        </div>
+
+        <div class="detail-card">
+          <h2>Ce qui est inclus</h2>
+          <ul>
+            ${service.includes.map(item => `<li>${item}</li>`).join('')}
+          </ul>
+        </div>
+
+        ${service.note ? `
+        <div class="detail-card">
+          <h2>À noter</h2>
+          <p>${service.note}</p>
+        </div>` : ''}
+      `;
+    } else {
+      content.innerHTML = `
+        <h1>Service introuvable</h1>
+        <p style="color:#9d9db5;margin-top:16px;">Ce service n'existe pas ou le lien est incorrect.</p>
+      `;
+    }
+
+  </script>
+  <!-- ================================================= -->
+
+</body>
+</html>

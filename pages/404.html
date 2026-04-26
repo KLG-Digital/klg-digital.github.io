@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — KLG Digital</title>
+  <link rel="icon" type="image/png" href="Images/KLG-Digital-blanc.png">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    #starCanvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      min-height: calc(100vh - 80px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px;
+    }
+
+    .error-code {
+      font-size: clamp(6em, 20vw, 12em);
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(135deg, #7c3aed, #a855f7, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { filter: brightness(1); }
+      50%       { filter: brightness(1.2); }
+    }
+
+    .error-title {
+      font-size: clamp(1.2em, 3vw, 1.8em);
+      font-weight: 700;
+      color: white;
+      margin-bottom: 16px;
+    }
+
+    .error-desc {
+      font-size: 0.95em;
+      color: #6b6b8a;
+      line-height: 1.7;
+      max-width: 420px;
+      margin-bottom: 48px;
+    }
+
+    .error-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #7c3aed, #a855f7);
+      border-radius: 10px;
+      color: white;
+      font-size: 0.88em;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-home:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(168,85,247,0.4);
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      color: white;
+      font-size: 0.88em;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-back:hover { background: rgba(255,255,255,0.09); }
+
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAVBAR JS ================= -->
+  <script src="js/navbar.js"></script>
+  <!-- ================================================= -->
+
+  <!-- ===================== STARS JS ================== -->
+  <script src="js/stars.js"></script>
+  <!-- ================================================= -->
+
+  <main>
+    <div class="error-code">404</div>
+    <div class="error-title">Page introuvable</div>
+    <p class="error-desc">
+      Cette page n'existe pas ou a été déplacée.<br>
+      Un souci ? Me voici.
+    </p>
+    <div class="error-actions">
+      <a href="index.html" class="btn-home">← Retour à l'accueil</a>
+      <a href="pages/contact.html" class="btn-back">Me contacter</a>
+    </div>
+  </main>
+
+  <!-- ===================== FOOTER JS ================= -->
+  <script src="js/footer.js"></script>
+  <!-- ================================================= -->
+
+</body>
+</html>
