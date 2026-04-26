@@ -33,7 +33,7 @@
   const navHTML = `
     <nav class="navbar">
       <a href="${root}index.html" class="logo">
-        <img src="${imgRoot}Images/KLG-Digital-blanc.png" alt="KLG Digital" class="logo-img">
+        <img src="${imgRoot}images/KLG-Digital-blanc.png" alt="KLG Digital" class="logo-img">
       </a>
       <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
         <span></span>
