@@ -3,9 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KLG Digital</title>
+  <title>KLG Digital — IT, Vidéo, Photo & Acting | Chablais, Vaud</title>
+  <meta name="description" content="Kevin Lemos Graça — Informaticien infrastructure CFC, créateur de contenu et développeur basé dans le Chablais vaudois. IT, vidéo, photo et acting. Disponible pour vos projets en Suisse romande.">
+  <meta name="keywords" content="informaticien Chablais, support informatique Vaud, montage vidéo Suisse romande, KLG Digital, Kevin Lemos Graca">
+  <meta name="author" content="Kevin Lemos Graça">
+  <meta property="og:title" content="KLG Digital — Un souci ? Me voici.">
+  <meta property="og:description" content="Informaticien infrastructure, créateur de contenu et développeur basé dans le Chablais vaudois.">
+  <meta property="og:url" content="https://klg-digital.github.io/">
+  <meta property="og:type" content="website">
   <link rel="icon" type="image/png" href="images/KLG-Digital-blanc.png">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
     /* ── PLANÈTES EN CERCLE — spécifique à cette page ── */
@@ -30,6 +38,7 @@
       border-radius: 50%;
       background: radial-gradient(circle at 30% 30%, #a855f7, #4c1d95);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
@@ -37,13 +46,16 @@
       font-weight: bold;
       text-decoration: none;
       font-size: clamp(0.65em, 2.5vmin, 0.9em);
-      line-height: 1.4;
+      line-height: 1.6;
+      gap: 4px;
       animation: float 6s ease-in-out infinite;
       animation-delay: calc(var(--i) * 1.5s);
       transition: box-shadow 0.3s, filter 0.3s;
       left: calc(50% + var(--radius) * cos(calc(var(--i) * 90deg - 90deg)) - var(--planet-offset));
       top:  calc(50% + var(--radius) * sin(calc(var(--i) * 90deg - 90deg)) - var(--planet-offset));
     }
+
+    .planet i { font-size: 1.3em; }
 
     .planet:hover {
       box-shadow: 0 0 25px #9333ea;
@@ -53,6 +65,42 @@
     @keyframes float {
       0%, 100% { transform: translateY(0px); }
       50%       { transform: translateY(clamp(-6px, -2vmin, -12px)); }
+    }
+
+    /* ── HERO TEXTE ── */
+    .hero-content {
+      position: absolute;
+      top: clamp(20px, 5vmin, 48px);
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      width: 100%;
+      padding: 0 24px;
+      z-index: 1;
+    }
+
+    .hero-slogan {
+      font-size: clamp(0.75em, 2vw, 0.95em);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #a855f7;
+      margin-bottom: 10px;
+    }
+
+    .hero-h1 {
+      font-size: clamp(1.4em, 4vw, 2.2em);
+      font-weight: 800;
+      color: white;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .hero-desc {
+      font-size: clamp(0.8em, 1.8vw, 0.95em);
+      color: #6b6b8a;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.7;
     }
   </style>
 </head>
@@ -70,12 +118,27 @@
   <!-- ====================== HERO ====================== -->
   <header class="hero">
 
+    <!-- TEXTE D'ACCROCHE -->
+    <div class="hero-content">
+      <p class="hero-slogan">✦ Un souci ? Me voici.</p>
+      <h1 class="hero-h1">Kevin Lemos Graça</h1>
+      <p class="hero-desc">IT, vidéo, photo et acting. Basé dans le Chablais vaudois, disponible pour vos projets en Suisse romande.</p>
+    </div>
+
     <!-- PLANÈTES EN CERCLE FIXE -->
     <div class="orbit-container">
-      <a href="pages/it.html"     class="planet" style="--i:0">💻<br>IT</a>
-      <a href="pages/video.html"  class="planet" style="--i:1">🎬<br>Video</a>
-      <a href="pages/photo.html"  class="planet" style="--i:2">📸<br>Photo</a>
-      <a href="pages/acting.html" class="planet" style="--i:3">🎭<br>Acting</a>
+      <a href="pages/it.html" class="planet" style="--i:0">
+        <i class="fa-solid fa-laptop-code"></i>IT
+      </a>
+      <a href="pages/video.html" class="planet" style="--i:1">
+        <i class="fa-solid fa-film"></i>Vidéo
+      </a>
+      <a href="pages/photo.html" class="planet" style="--i:2">
+        <i class="fa-solid fa-camera"></i>Photo
+      </a>
+      <a href="pages/acting.html" class="planet" style="--i:3">
+        <i class="fa-solid fa-masks-theater"></i>Acting
+      </a>
     </div>
 
   </header>
