@@ -4,8 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Service — KLG Digital</title>
+  <meta name="description" content="Détail d'un service proposé par KLG Digital — IT, vidéo, photo et création média dans le Chablais vaudois.">
+  <meta name="author" content="Kevin Lemos Graça">
   <link rel="icon" type="image/png" href="../images/KLG-Digital-blanc.png">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 
   <style>
 
@@ -219,7 +223,7 @@
     // ── Données des services ─────────────────────────────────
     const services = {
       'support': {
-        tag: '🛠️ IT & Infrastructure',
+        tag: '<i class="fa-solid fa-screwdriver-wrench"></i> IT & Infrastructure',
         title: 'Support informatique',
         price: '55.- CHF / heure',
         priceClass: 'price-fixed',
@@ -234,7 +238,7 @@
         note: 'Facturation à la demi-heure. Déplacement selon distance.'
       },
       'maintenance': {
-        tag: '🔧 IT & Infrastructure',
+        tag: '<i class="fa-solid fa-wrench"></i> IT & Infrastructure',
         title: 'Maintenance PC',
         price: '55.- CHF / heure',
         priceClass: 'price-fixed',
@@ -249,7 +253,7 @@
         note: 'Facturation à la demi-heure.'
       },
       'montage-pc': {
-        tag: '🖥️ IT & Infrastructure',
+        tag: '<i class="fa-solid fa-desktop"></i> IT & Infrastructure',
         title: 'Montage PC sur mesure',
         price: 'Sur demande',
         priceClass: 'price-demand',
@@ -265,7 +269,7 @@
         note: 'Le prix dépend des composants choisis. Devis gratuit sur demande.'
       },
       'upgrade': {
-        tag: '⚡ IT & Infrastructure',
+        tag: '<i class="fa-solid fa-bolt"></i> IT & Infrastructure',
         title: 'Upgrade matériel',
         price: '55.- CHF / heure + matériel',
         priceClass: 'price-fixed',
@@ -281,7 +285,7 @@
         note: 'Le matériel est facturé séparément au prix d\'achat. Conseil d\'achat gratuit.'
       },
       'parc': {
-        tag: '🏢 IT & Infrastructure',
+        tag: '<i class="fa-solid fa-building"></i> IT & Infrastructure',
         title: 'Renouvellement parc informatique',
         price: 'Sur demande',
         priceClass: 'price-demand',
@@ -297,7 +301,7 @@
         note: 'Devis personnalisé selon le nombre de postes et la complexité.'
       },
       'conseils': {
-        tag: '💡 IT & Infrastructure',
+        tag: '<i class="fa-solid fa-lightbulb"></i> IT & Infrastructure',
         title: 'Conseils & accompagnement',
         price: '55.- CHF / heure',
         priceClass: 'price-fixed',
@@ -312,7 +316,7 @@
         note: 'Première consultation de 30 minutes offerte.'
       },
       'cours': {
-        tag: '📚 IT & Infrastructure',
+        tag: '<i class="fa-solid fa-book-open"></i> IT & Infrastructure',
         title: 'Cours informatique',
         price: '50.- CHF / heure',
         priceClass: 'price-fixed',
@@ -328,7 +332,7 @@
         note: 'Cours à domicile ou à distance. Rythme adapté à votre niveau.'
       },
       'montage-photo': {
-        tag: '📸 Création & Média',
+        tag: '<i class="fa-solid fa-camera"></i> Création & Média',
         title: 'Montage photo',
         price: 'Sur demande',
         priceClass: 'price-demand',
@@ -343,7 +347,7 @@
         note: 'Tarif selon volume et complexité. Devis gratuit sur demande.'
       },
       'montage-video': {
-        tag: '🎬 Création & Média',
+        tag: '<i class="fa-solid fa-film"></i> Création & Média',
         title: 'Montage vidéo',
         price: 'Sur demande',
         priceClass: 'price-demand',
@@ -358,7 +362,7 @@
         note: 'Tarif selon durée et complexité du projet. Devis gratuit sur demande.'
       },
       'logo': {
-        tag: '✏️ Création & Média',
+        tag: '<i class="fa-solid fa-pen-nib"></i> Création & Média',
         title: 'Création logo',
         price: 'Sur demande',
         priceClass: 'price-demand',
@@ -373,7 +377,7 @@
         note: 'Devis personnalisé selon la complexité du projet.'
       },
       'media': {
-        tag: '🎭 Création & Média',
+        tag: '<i class="fa-solid fa-masks-theater"></i> Création & Média',
         title: 'Création média',
         price: 'Sur demande',
         priceClass: 'price-demand',

@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IT — KLG Digital</title>
+  <title>IT & Infrastructure — KLG Digital | Chablais, Vaud</title>
+  <meta name="description" content="Support informatique, maintenance PC, montage sur mesure et configurations recommandées. Services IT dans le Chablais vaudois.">
+  <meta name="author" content="Kevin Lemos Graça">
   <link rel="icon" type="image/png" href="../images/KLG-Digital-blanc.png">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
 
@@ -116,7 +119,13 @@
       align-items: flex-start;
     }
 
-    .service-icon { font-size: 1.5em; }
+    .service-icon { font-size: 1.5em; color: white; }
+    .service-card i { color: white; }
+    .config-img i { font-size: 3em; color: rgba(168,85,247,0.4); }
+    .btn-digitec i { color: white; }
+    .section-title i { color: #a855f7; }
+    .config-category-title i { color: #a855f7; margin-right: 6px; }
+    .disclaimer i { color: #fbbf24; }
 
     .service-price {
       font-size: 0.75em;
@@ -189,7 +198,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 4em;
+    }
+
+    .config-img i {
+      font-size: 3em;
       color: rgba(168,85,247,0.3);
     }
 
@@ -358,14 +370,15 @@
   <script src="../js/navbar.js"></script>
   <!-- ================================================= -->
 
-  <!-- ===================== STARS JS ================== -->
+
+  <!-- ===================== STARS JS ================= -->
   <script src="../js/stars.js"></script>
   <!-- ================================================= -->
-
+   
 
   <!-- ==================== CONTENU ==================== -->
   <main>
-    <p class="heading-tag">💻 Spécialité</p>
+    <p class="heading-tag"><i class="fa-solid fa-laptop-code"></i> Spécialité</p>
     <h1>IT & Infrastructure</h1>
     <p class="subtitle">Support, maintenance, montage et conseils — des prestations IT adaptées à vos besoins, par un technicien certifié CFC.</p>
 
@@ -375,7 +388,7 @@
 
       <a href="service-detail.html?id=support" class="service-card">
         <div class="service-header">
-          <span class="service-icon">🛠️</span>
+          <span class="service-icon"><i class="fa-solid fa-screwdriver-wrench"></i></span>
           <span class="service-price price-fixed">55.- / h</span>
         </div>
         <div class="service-name">Support informatique</div>
@@ -385,7 +398,7 @@
 
       <a href="service-detail.html?id=maintenance" class="service-card">
         <div class="service-header">
-          <span class="service-icon">🔧</span>
+          <span class="service-icon"><i class="fa-solid fa-wrench"></i></span>
           <span class="service-price price-fixed">55.- / h</span>
         </div>
         <div class="service-name">Maintenance PC</div>
@@ -395,7 +408,7 @@
 
       <a href="service-detail.html?id=montage-pc" class="service-card">
         <div class="service-header">
-          <span class="service-icon">🖥️</span>
+          <span class="service-icon"><i class="fa-solid fa-desktop"></i></span>
           <span class="service-price price-demand">Sur demande</span>
         </div>
         <div class="service-name">Montage PC sur mesure</div>
@@ -405,7 +418,7 @@
 
       <a href="service-detail.html?id=upgrade" class="service-card">
         <div class="service-header">
-          <span class="service-icon">⚡</span>
+          <span class="service-icon"><i class="fa-solid fa-bolt"></i></span>
           <span class="service-price price-fixed">55.- / h + matériel</span>
         </div>
         <div class="service-name">Upgrade matériel</div>
@@ -415,7 +428,7 @@
 
       <a href="service-detail.html?id=parc" class="service-card">
         <div class="service-header">
-          <span class="service-icon">🏢</span>
+          <span class="service-icon"><i class="fa-solid fa-building"></i></span>
           <span class="service-price price-demand">Sur demande</span>
         </div>
         <div class="service-name">Renouvellement parc informatique</div>
@@ -425,7 +438,7 @@
 
       <a href="service-detail.html?id=conseils" class="service-card">
         <div class="service-header">
-          <span class="service-icon">💡</span>
+          <span class="service-icon"><i class="fa-solid fa-lightbulb"></i></span>
           <span class="service-price price-fixed">55.- / h</span>
         </div>
         <div class="service-name">Conseils &amp; accompagnement</div>
@@ -435,7 +448,7 @@
 
       <a href="service-detail.html?id=cours" class="service-card">
         <div class="service-header">
-          <span class="service-icon">📚</span>
+          <span class="service-icon"><i class="fa-solid fa-book-open"></i></span>
           <span class="service-price price-fixed">50.- / h</span>
         </div>
         <div class="service-name">Cours informatique</div>
@@ -446,21 +459,21 @@
     </div>
 
     <!-- ── CONFIGS PRÉDÉFINIES ── -->
-    <div class="section-title">🖥️ Configurations recommandées</div>
+    <div class="section-title"><i class="fa-solid fa-desktop"></i> Configurations recommandées</div>
 
     <!-- Disclaimer -->
     <div class="disclaimer">
-      ⚠️ Ces configurations sont des bases de départ évolutives. Elles n'incluent pas tous les composants (boîtier, alimentation, refroidissement, écran, périphériques). Le choix final est adapté selon vos besoins et votre budget.
+      <i class="fa-solid fa-triangle-exclamation"></i> Ces configurations sont des bases de départ évolutives. Elles n'incluent pas tous les composants (boîtier, alimentation, refroidissement, écran, périphériques). Le choix final est adapté selon vos besoins et votre budget.
     </div>
 
     <!-- DESKTOP -->
-    <div class="config-category-title">🖥️ Desktop</div>
+    <div class="config-category-title"><i class="fa-solid fa-desktop"></i> Desktop</div>
     <div class="configs-grid">
 
       <!-- CONFIG 1 : AMD Bureautique -->
       <div class="config-card">
-        <div class="config-img">🖥️</div>
-        <!-- Remplace par : <img src="../Images/configs/amd-bureautique.jpg" alt="AMD Bureautique"> -->
+        <div class="config-img"><i class="fa-solid fa-desktop"></i></div>
+        <!-- Remplace par : <img src="../images/configs/amd-bureautique.jpg" alt="AMD Bureautique"> -->
         <div class="config-body">
           <span class="config-badge badge-amd">AMD · Bureautique</span>
           <div class="config-name">Bureau Essentiel</div>
@@ -484,14 +497,14 @@
             </div>
           </div>
           <a href="https://www.digitec.ch" target="_blank" class="btn-digitec">
-            🔗 Voir sur Digitec
+            <i class="fa-solid fa-link"></i> Voir sur Digitec
           </a>
         </div>
       </div>
 
       <!-- CONFIG 2 : Intel Bureautique -->
       <div class="config-card">
-        <div class="config-img">🖥️</div>
+        <div class="config-img"><i class="fa-solid fa-desktop"></i></div>
         <div class="config-body">
           <span class="config-badge badge-intel">Intel · Bureautique</span>
           <div class="config-name">Bureau Pro</div>
@@ -515,14 +528,14 @@
             </div>
           </div>
           <a href="https://www.digitec.ch" target="_blank" class="btn-digitec">
-            🔗 Voir sur Digitec
+            <i class="fa-solid fa-link"></i> Voir sur Digitec
           </a>
         </div>
       </div>
 
       <!-- CONFIG 3 : AMD Gaming -->
       <div class="config-card">
-        <div class="config-img">🖥️</div>
+        <div class="config-img"><i class="fa-solid fa-desktop"></i></div>
         <div class="config-body">
           <span class="config-badge badge-amd">AMD · Gaming</span>
           <div class="config-name">Gaming Mid-Range</div>
@@ -546,14 +559,14 @@
             </div>
           </div>
           <a href="https://www.digitec.ch" target="_blank" class="btn-digitec">
-            🔗 Voir sur Digitec
+            <i class="fa-solid fa-link"></i> Voir sur Digitec
           </a>
         </div>
       </div>
 
       <!-- CONFIG 4 : Intel Gaming -->
       <div class="config-card">
-        <div class="config-img">🖥️</div>
+        <div class="config-img"><i class="fa-solid fa-desktop"></i></div>
         <div class="config-body">
           <span class="config-badge badge-intel">Intel · Gaming</span>
           <div class="config-name">Gaming High-End</div>
@@ -577,14 +590,14 @@
             </div>
           </div>
           <a href="https://www.digitec.ch" target="_blank" class="btn-digitec">
-            🔗 Voir sur Digitec
+            <i class="fa-solid fa-link"></i> Voir sur Digitec
           </a>
         </div>
       </div>
 
       <!-- CONFIG 5 : AMD Montage Vidéo -->
       <div class="config-card">
-        <div class="config-img">🖥️</div>
+        <div class="config-img"><i class="fa-solid fa-desktop"></i></div>
         <div class="config-body">
           <span class="config-badge badge-amd">AMD · Création</span>
           <div class="config-name">Station Montage</div>
@@ -608,14 +621,14 @@
             </div>
           </div>
           <a href="https://www.digitec.ch" target="_blank" class="btn-digitec">
-            🔗 Voir sur Digitec
+            <i class="fa-solid fa-link"></i> Voir sur Digitec
           </a>
         </div>
       </div>
 
       <!-- CONFIG 6 : Intel Workstation -->
       <div class="config-card">
-        <div class="config-img">🖥️</div>
+        <div class="config-img"><i class="fa-solid fa-desktop"></i></div>
         <div class="config-body">
           <span class="config-badge badge-intel">Intel · Workstation</span>
           <div class="config-name">Station Pro</div>
@@ -639,7 +652,7 @@
             </div>
           </div>
           <a href="https://www.digitec.ch" target="_blank" class="btn-digitec">
-            🔗 Voir sur Digitec
+            <i class="fa-solid fa-link"></i> Voir sur Digitec
           </a>
         </div>
       </div>
@@ -647,12 +660,12 @@
     </div>
 
     <!-- LAPTOP -->
-    <div class="config-category-title">💻 Laptop</div>
+    <div class="config-category-title"><i class="fa-solid fa-laptop-code"></i> Laptop</div>
     <div class="configs-grid">
 
       <!-- LAPTOP AMD -->
       <div class="config-card">
-        <div class="config-img">💻</div>
+        <div class="config-img"><i class="fa-solid fa-laptop-code"></i></div>
         <div class="config-body">
           <span class="config-badge badge-amd">AMD · Laptop Bureautique</span>
           <div class="config-name">Laptop Essentiel</div>
@@ -664,13 +677,13 @@
             <div class="spec-item"><span class="spec-label">Écran</span><span class="spec-value">15.6" FHD IPS</span></div>
             <div class="spec-item"><span class="spec-label">GPU</span><span class="spec-value">Radeon 760M (iGPU)</span></div>
           </div>
-          <a href="https://www.digitec.ch" target="_blank" class="btn-digitec">🔗 Voir sur Digitec</a>
+          <a href="https://www.digitec.ch" target="_blank" class="btn-digitec"><i class="fa-solid fa-link"></i> Voir sur Digitec</a>
         </div>
       </div>
 
       <!-- LAPTOP Intel -->
       <div class="config-card">
-        <div class="config-img">💻</div>
+        <div class="config-img"><i class="fa-solid fa-laptop-code"></i></div>
         <div class="config-body">
           <span class="config-badge badge-intel">Intel · Laptop Pro</span>
           <div class="config-name">Laptop Pro</div>
@@ -682,13 +695,13 @@
             <div class="spec-item"><span class="spec-label">Écran</span><span class="spec-value">14" FHD+ IPS</span></div>
             <div class="spec-item"><span class="spec-label">GPU</span><span class="spec-value">Intel Arc (iGPU)</span></div>
           </div>
-          <a href="https://www.digitec.ch" target="_blank" class="btn-digitec">🔗 Voir sur Digitec</a>
+          <a href="https://www.digitec.ch" target="_blank" class="btn-digitec"><i class="fa-solid fa-link"></i> Voir sur Digitec</a>
         </div>
       </div>
 
       <!-- LAPTOP AMD Gaming -->
       <div class="config-card">
-        <div class="config-img">💻</div>
+        <div class="config-img"><i class="fa-solid fa-laptop-code"></i></div>
         <div class="config-body">
           <span class="config-badge badge-amd">AMD · Laptop Gaming</span>
           <div class="config-name">Laptop Gaming</div>
@@ -700,13 +713,13 @@
             <div class="spec-item"><span class="spec-label">Écran</span><span class="spec-value">15.6" QHD 165Hz</span></div>
             <div class="spec-item"><span class="spec-label">GPU</span><span class="spec-value">NVIDIA RTX 4060 Mobile</span></div>
           </div>
-          <a href="https://www.digitec.ch" target="_blank" class="btn-digitec">🔗 Voir sur Digitec</a>
+          <a href="https://www.digitec.ch" target="_blank" class="btn-digitec"><i class="fa-solid fa-link"></i> Voir sur Digitec</a>
         </div>
       </div>
 
       <!-- LAPTOP Intel Gaming -->
       <div class="config-card">
-        <div class="config-img">💻</div>
+        <div class="config-img"><i class="fa-solid fa-laptop-code"></i></div>
         <div class="config-body">
           <span class="config-badge badge-intel">Intel · Laptop Gaming</span>
           <div class="config-name">Laptop Gaming High-End</div>
@@ -718,19 +731,19 @@
             <div class="spec-item"><span class="spec-label">Écran</span><span class="spec-value">16" QHD 240Hz</span></div>
             <div class="spec-item"><span class="spec-label">GPU</span><span class="spec-value">NVIDIA RTX 4070 Mobile</span></div>
           </div>
-          <a href="https://www.digitec.ch" target="_blank" class="btn-digitec">🔗 Voir sur Digitec</a>
+          <a href="https://www.digitec.ch" target="_blank" class="btn-digitec"><i class="fa-solid fa-link"></i> Voir sur Digitec</a>
         </div>
       </div>
 
     </div>
 
     <!-- NAS FAIT MAISON -->
-    <div class="config-category-title">🗄️ NAS fait maison</div>
+    <div class="config-category-title"><i class="fa-solid fa-server"></i> NAS fait maison</div>
     <div class="configs-grid">
 
       <!-- NAS AMD -->
       <div class="config-card">
-        <div class="config-img">🗄️</div>
+        <div class="config-img"><i class="fa-solid fa-server"></i></div>
         <div class="config-body">
           <span class="config-badge badge-amd">AMD · NAS Essentiel</span>
           <div class="config-name">NAS Home</div>
@@ -742,13 +755,13 @@
             <div class="spec-item"><span class="spec-label">Stockage data</span><span class="spec-value">2× HDD selon besoin</span></div>
             <div class="spec-item"><span class="spec-label">OS</span><span class="spec-value">TrueNAS / OMV</span></div>
           </div>
-          <a href="https://www.digitec.ch" target="_blank" class="btn-digitec">🔗 Voir sur Digitec</a>
+          <a href="https://www.digitec.ch" target="_blank" class="btn-digitec"><i class="fa-solid fa-link"></i> Voir sur Digitec</a>
         </div>
       </div>
 
       <!-- NAS Intel -->
       <div class="config-card">
-        <div class="config-img">🗄️</div>
+        <div class="config-img"><i class="fa-solid fa-server"></i></div>
         <div class="config-body">
           <span class="config-badge badge-intel">Intel · NAS Pro</span>
           <div class="config-name">NAS Pro</div>
@@ -760,19 +773,19 @@
             <div class="spec-item"><span class="spec-label">Stockage data</span><span class="spec-value">4× HDD selon besoin</span></div>
             <div class="spec-item"><span class="spec-label">OS</span><span class="spec-value">TrueNAS SCALE</span></div>
           </div>
-          <a href="https://www.digitec.ch" target="_blank" class="btn-digitec">🔗 Voir sur Digitec</a>
+          <a href="https://www.digitec.ch" target="_blank" class="btn-digitec"><i class="fa-solid fa-link"></i> Voir sur Digitec</a>
         </div>
       </div>
 
     </div>
 
     <!-- SERVEUR FAIT MAISON -->
-    <div class="config-category-title">🖧 Serveur fait maison</div>
+    <div class="config-category-title"><i class="fa-solid fa-network-wired"></i> Serveur fait maison</div>
     <div class="configs-grid">
 
       <!-- SERVEUR AMD -->
       <div class="config-card">
-        <div class="config-img">🖧</div>
+        <div class="config-img"><i class="fa-solid fa-network-wired"></i></div>
         <div class="config-body">
           <span class="config-badge badge-amd">AMD · Serveur Home Lab</span>
           <div class="config-name">Home Lab</div>
@@ -784,13 +797,13 @@
             <div class="spec-item"><span class="spec-label">Stockage VM</span><span class="spec-value">2 To HDD / SSD</span></div>
             <div class="spec-item"><span class="spec-label">OS</span><span class="spec-value">Proxmox VE</span></div>
           </div>
-          <a href="https://www.digitec.ch" target="_blank" class="btn-digitec">🔗 Voir sur Digitec</a>
+          <a href="https://www.digitec.ch" target="_blank" class="btn-digitec"><i class="fa-solid fa-link"></i> Voir sur Digitec</a>
         </div>
       </div>
 
       <!-- SERVEUR Intel -->
       <div class="config-card">
-        <div class="config-img">🖧</div>
+        <div class="config-img"><i class="fa-solid fa-network-wired"></i></div>
         <div class="config-body">
           <span class="config-badge badge-intel">Intel · Serveur Pro</span>
           <div class="config-name">Serveur Pro</div>
@@ -802,7 +815,7 @@
             <div class="spec-item"><span class="spec-label">Stockage data</span><span class="spec-value">4 To HDD RAID</span></div>
             <div class="spec-item"><span class="spec-label">OS</span><span class="spec-value">Proxmox VE / Windows Server</span></div>
           </div>
-          <a href="https://www.digitec.ch" target="_blank" class="btn-digitec">🔗 Voir sur Digitec</a>
+          <a href="https://www.digitec.ch" target="_blank" class="btn-digitec"><i class="fa-solid fa-link"></i> Voir sur Digitec</a>
         </div>
       </div>
 

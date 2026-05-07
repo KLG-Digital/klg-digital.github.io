@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="../images/KLG-Digital-blanc.png">
-  <title>Contact — KLG Digital</title>
+  <title>Contact — KLG Digital | Chablais, Vaud</title>
+  <meta name="description" content="Contactez Kevin Lemos Graça pour un projet IT, vidéo, photo ou acting. Basé dans le Chablais vaudois, réponse sous 48h.">
+  <meta name="author" content="Kevin Lemos Graça">
 
   <style>
 
@@ -53,7 +55,7 @@
       /* pas de border-bottom — effet immersif comme l'index */
     }
 
-    /* Logo image */
+    /* ── Logo image ── */
     .logo { text-decoration: none; display: flex; align-items: center; }
     .logo-img { height: 40px; width: auto; display: block; }
 
@@ -62,7 +64,7 @@
 
     .nav-links { display: flex; gap: 25px; list-style: none; }
 
-    /* Lien actif (page courante) */
+    /* ── Lien actif (page courante) ── */
     .nav-links .active { color: var(--purple); }
 
     /* ================= HAMBURGER ================= */
@@ -88,7 +90,7 @@
       transform-origin: center;
     }
 
-    /* Animation hamburger → croix */
+    /* ── Animation hamburger → croix ── */
     .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .menu-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
     .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -135,7 +137,7 @@
       overflow: hidden;
     }
 
-    /* Ligne lumineuse en haut de la carte */
+    /* ── Ligne lumineuse en haut de la carte ── */
     .form-card::before {
       content: '';
       position: absolute;
@@ -183,7 +185,7 @@
       box-shadow: 0 0 0 3px rgba(168,85,247,0.12);
     }
 
-    /* Flèche personnalisée du select */
+    /* ── Flèche personnalisée du select ── */
     select {
       appearance: none;
       cursor: pointer;
@@ -303,16 +305,12 @@
       gap: 12px;
     }
 
+    .footer-left { display: flex; flex-direction: column; gap: 4px; }
     .footer-copy { font-size: 0.8em; color: #6b6b8a; }
-
-    .footer-links {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.8em;
-    }
-
-    .footer-links a { color: #6b6b8a; text-decoration: none; transition: color 0.2s; }
+    .footer-location { font-size: 0.78em; color: #4a4a6a; display: flex; align-items: center; gap: 6px; }
+    .footer-location i { color: #a855f7; font-size: 0.85em; }
+    .footer-links { display: flex; align-items: center; gap: 10px; font-size: 0.8em; flex-wrap: wrap; }
+    .footer-links a { color: #6b6b8a; text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 6px; }
     .footer-links a:hover { color: #a855f7; }
     .footer-sep { color: #3d3d5c; }
 
@@ -373,10 +371,10 @@
           <label for="categorie">Catégorie</label>
           <select id="categorie" name="categorie" required>
             <option value="" disabled selected>Choisir une catégorie…</option>
-            <option value="IT">💻 IT</option>
-            <option value="Vidéo">🎬 Vidéo</option>
-            <option value="Photo">📸 Photo</option>
-            <option value="Acting">🎭 Acting</option>
+            <option value="IT"><i class="fa-solid fa-laptop-code"></i> IT</option>
+            <option value="Vidéo"><i class="fa-solid fa-film"></i> Vidéo</option>
+            <option value="Photo"><i class="fa-solid fa-camera"></i> Photo</option>
+            <option value="Acting"><i class="fa-solid fa-masks-theater"></i> Acting</option>
             <option value="Autre">✦ Autre</option>
           </select>
         </div>

@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mon parcours — KLG Digital</title>
+  <meta name="description" content="Parcours professionnel de Kevin Lemos Graça — apprenti informaticien CFC infrastructure à l'ORIF Aigle, stages en entreprise et formations.">
+  <meta name="author" content="Kevin Lemos Graça">
   <link rel="icon" type="image/png" href="../images/KLG-Digital-blanc.png">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
 
@@ -40,7 +43,6 @@
       padding-left: 32px;
     }
 
-    /* Ligne verticale centrale */
     .timeline::before {
       content: '';
       position: absolute;
@@ -61,12 +63,18 @@
       animation: slideIn 0.5s ease forwards;
     }
 
-    .timeline-item:nth-child(1) { animation-delay: 0.1s; }
-    .timeline-item:nth-child(2) { animation-delay: 0.25s; }
-    .timeline-item:nth-child(3) { animation-delay: 0.4s; }
-    .timeline-item:nth-child(4) { animation-delay: 0.55s; }
-    .timeline-item:nth-child(5) { animation-delay: 0.7s; }
-    .timeline-item:nth-child(6) { animation-delay: 0.85s; }
+    .timeline-item:nth-child(1)  { animation-delay: 0.1s; }
+    .timeline-item:nth-child(2)  { animation-delay: 0.2s; }
+    .timeline-item:nth-child(3)  { animation-delay: 0.3s; }
+    .timeline-item:nth-child(4)  { animation-delay: 0.4s; }
+    .timeline-item:nth-child(5)  { animation-delay: 0.5s; }
+    .timeline-item:nth-child(6)  { animation-delay: 0.6s; }
+    .timeline-item:nth-child(7)  { animation-delay: 0.7s; }
+    .timeline-item:nth-child(8)  { animation-delay: 0.8s; }
+    .timeline-item:nth-child(9)  { animation-delay: 0.9s; }
+    .timeline-item:nth-child(10) { animation-delay: 1.0s; }
+    .timeline-item:nth-child(11) { animation-delay: 1.1s; }
+    .timeline-item:nth-child(12) { animation-delay: 1.2s; }
 
     @keyframes slideIn {
       to { opacity: 1; transform: translateX(0); }
@@ -90,9 +98,7 @@
       box-shadow: 0 0 20px rgba(168,85,247,0.9);
     }
 
-    /* Point "en cours" — pulsation */
     .timeline-dot.current {
-      background: #a855f7;
       animation: pulse 2s ease-in-out infinite;
     }
 
@@ -118,7 +124,6 @@
       background: rgba(168,85,247,0.04);
     }
 
-    /* Logo établissement */
     .timeline-logo {
       width: 52px;
       height: 52px;
@@ -138,7 +143,16 @@
       object-fit: contain;
     }
 
-    /* Contenu texte */
+    /* Icône FA dans logo */
+    .timeline-logo i {
+      font-size: 1.4em;
+      color: #a855f7;
+    }
+
+    .timeline-logo.dark {
+      background: #1a1a2e;
+    }
+
     .timeline-content { flex: 1; }
 
     .timeline-meta {
@@ -149,7 +163,6 @@
       flex-wrap: wrap;
     }
 
-    /* Badge type : formation / expérience */
     .badge {
       display: inline-block;
       font-size: 0.68em;
@@ -224,8 +237,7 @@
   <script src="../js/navbar.js"></script>
   <!-- ================================================= -->
 
-
-  <!-- ===================== STARS JS ================= -->
+  <!-- ===================== STARS JS ================== -->
   <script src="../js/stars.js"></script>
   <!-- ================================================= -->
 
@@ -237,14 +249,14 @@
 
     <div class="timeline">
 
-      <!-- ITEM 1 : ORIF Aigle (en cours) -->
+      <!-- ITEM 12 : ORIF Aigle (en cours) -->
       <div class="timeline-item">
         <div class="timeline-dot current"></div>
         <div class="timeline-card">
           <div class="timeline-logo">
             <img src="https://www.orif.ch/fileadmin/user_upload/orif/Media/ORIF_logo_big.jpg"
                  alt="ORIF"
-                 onerror="this.style.display='none'; this.parentNode.innerHTML='🏢';">
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fa-solid fa-building\'></i>';">
           </div>
           <div class="timeline-content">
             <div class="timeline-meta">
@@ -260,14 +272,14 @@
         </div>
       </div>
 
-      <!-- ITEM 2 : EPSIC (en cours) -->
+      <!-- ITEM 11 : EPSIC (en cours) -->
       <div class="timeline-item">
         <div class="timeline-dot current"></div>
         <div class="timeline-card">
           <div class="timeline-logo">
             <img src="https://www.epsic.ch/wp-content/uploads/2022/05/Logo-EPSIC.png"
                  alt="EPSIC"
-                 onerror="this.style.display='none'; this.parentNode.innerHTML='🎓';">
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fa-solid fa-graduation-cap\'></i>';">
           </div>
           <div class="timeline-content">
             <div class="timeline-meta">
@@ -283,14 +295,14 @@
         </div>
       </div>
 
-      <!-- ITEM 3 : Stage Haut-Lac -->
+      <!-- ITEM 10 : Stage Haut-Lac -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
           <div class="timeline-logo">
             <img src="https://haut-lac.ch/wp-content/uploads/2025/12/Haut-Lac-Ecole-International-Suisse.jpg"
                  alt="Haut-Lac"
-                 onerror="this.style.display='none'; this.parentNode.innerHTML='💼';">
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fa-solid fa-briefcase\'></i>';">
           </div>
           <div class="timeline-content">
             <div class="timeline-meta">
@@ -303,14 +315,14 @@
         </div>
       </div>
 
-      <!-- ITEM 4 : Stage CIMO Septembre 2024 -->
+      <!-- ITEM 9 : Stage CIMO Septembre 2024 -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
           <div class="timeline-logo">
             <img src="https://www.cimo.ch/wp-content/uploads/2021/01/CIMO_logo_quadri.svg"
                  alt="CIMO"
-                 onerror="this.style.display='none'; this.parentNode.innerHTML='💼';">
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fa-solid fa-briefcase\'></i>';">
           </div>
           <div class="timeline-content">
             <div class="timeline-meta">
@@ -323,14 +335,14 @@
         </div>
       </div>
 
-      <!-- ITEM 5 : Stage CIMO Juin 2024 -->
+      <!-- ITEM 8 : Stage CIMO Juin 2024 -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
           <div class="timeline-logo">
             <img src="https://www.cimo.ch/wp-content/uploads/2021/01/CIMO_logo_quadri.svg"
                  alt="CIMO"
-                 onerror="this.style.display='none'; this.parentNode.innerHTML='💼';">
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fa-solid fa-briefcase\'></i>';">
           </div>
           <div class="timeline-content">
             <div class="timeline-meta">
@@ -343,14 +355,14 @@
         </div>
       </div>
 
-      <!-- ITEM 6 : Stage SOI Lausanne -->
+      <!-- ITEM 7 : Stage SOI Lausanne -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
           <div class="timeline-logo">
             <img src="https://www.lausanne.ch/ressources/decimuni/file/7725.jpg"
                  alt="SOI Ville de Lausanne"
-                 onerror="this.style.display='none'; this.parentNode.innerHTML='💼';">
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fa-solid fa-briefcase\'></i>';">
           </div>
           <div class="timeline-content">
             <div class="timeline-meta">
@@ -363,14 +375,14 @@
         </div>
       </div>
 
-      <!-- ITEM 7 : Stage Service IT ORIF Péveranges -->
+      <!-- ITEM 6 : Stage Service IT ORIF Péveranges -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
           <div class="timeline-logo">
             <img src="https://www.orif.ch/fileadmin/user_upload/orif/Media/ORIF_logo_big.jpg"
                  alt="ORIF"
-                 onerror="this.style.display='none'; this.parentNode.innerHTML='💼';">
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fa-solid fa-briefcase\'></i>';">
           </div>
           <div class="timeline-content">
             <div class="timeline-meta">
@@ -383,14 +395,14 @@
         </div>
       </div>
 
-      <!-- ITEM 8 : Stage section IT ORIF Aigle -->
+      <!-- ITEM 5 : Stage section IT ORIF Aigle -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
           <div class="timeline-logo">
             <img src="https://www.orif.ch/fileadmin/user_upload/orif/Media/ORIF_logo_big.jpg"
                  alt="ORIF"
-                 onerror="this.style.display='none'; this.parentNode.innerHTML='💼';">
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fa-solid fa-briefcase\'></i>';">
           </div>
           <div class="timeline-content">
             <div class="timeline-meta">
@@ -403,14 +415,14 @@
         </div>
       </div>
 
-      <!-- ITEM 9 : Stage ETML -->
+      <!-- ITEM 4 : Stage ETML -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
           <div class="timeline-logo">
             <img src="https://www.etml.ch/themes/etml/assets/images/etml_logo_simple.svg"
                  alt="ETML"
-                 onerror="this.style.display='none'; this.parentNode.innerHTML='🔧';">
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fa-solid fa-school\'></i>';">
           </div>
           <div class="timeline-content">
             <div class="timeline-meta">
@@ -423,14 +435,14 @@
         </div>
       </div>
 
-      <!-- ITEM 10 : Stage mécanicien automobile -->
+      <!-- ITEM 3 : Stage mécanicien automobile -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
           <div class="timeline-logo">
             <img src="https://scontent.fqls3-1.fna.fbcdn.net/v/t39.30808-6/291365507_531567775334594_6503780040442020417_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=mc5oQQmTHUoQ7kNvwFdL5et&_nc_oc=Adp3m6ILUbb_p7kVJlY3PRMLoPiIZDWyD_-vQC7tXDxvhNtL-RBnOovPuBLrtuRk3qr0iBFGdMmvENPw_d7lzjU0&_nc_zt=23&_nc_ht=scontent.fqls3-1.fna&_nc_gid=klKaAF6yfTU1x8HVEhDTAA&_nc_ss=7d289&oh=00_Af0mm9dRjcx0teFcc15WIZ0v5d5rAcJf68y3lqcz1uXHBg&oe=69F3B406"
                  alt="Garage de la Fontaine"
-                 onerror="this.style.display='none'; this.parentNode.innerHTML='🔧';">
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fa-solid fa-car\'></i>';">
           </div>
           <div class="timeline-content">
             <div class="timeline-meta">
@@ -443,11 +455,13 @@
         </div>
       </div>
 
-      <!-- ITEM 11 : Vendanges -->
+      <!-- ITEM 2 : Vendanges -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
-          <div class="timeline-logo" style="background:#1a1a2e;padding:10px;">🍇</div>
+          <div class="timeline-logo dark">
+            <i class="fa-solid fa-wine-glass"></i>
+          </div>
           <div class="timeline-content">
             <div class="timeline-meta">
               <span class="badge badge-pro">Travail auxiliaire</span>
@@ -459,14 +473,14 @@
         </div>
       </div>
 
-      <!-- ITEM 12 : EPS Aigle -->
+      <!-- ITEM 1 : EPS Aigle -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
           <div class="timeline-logo">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Logo_canton_de_Vaud.svg/500px-Logo_canton_de_Vaud.svg.png"
                  alt="EPS Aigle"
-                 onerror="this.style.display='none'; this.parentNode.innerHTML='🏫';">
+                 onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fa-solid fa-school\'></i>';">
           </div>
           <div class="timeline-content">
             <div class="timeline-meta">
@@ -488,9 +502,6 @@
   <!-- ===================== FOOTER JS ================= -->
   <script src="../js/footer.js"></script>
   <!-- ================================================= -->
-
-  <!-- ===================== SCRIPTS =================== -->
-<!-- ================================================= -->
 
 </body>
 </html>

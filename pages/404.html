@@ -3,11 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>404 — KLG Digital</title>
-  <link rel="icon" type="image/png" href="images/KLG-Digital-blanc.png">
-  <link rel="stylesheet" href="style.css">
+
+  <meta name="description" content="Page introuvable — KLG Digital">
+  <meta name="author" content="Kevin Lemos Graça">
+
+  <!-- ICON -->
+  <link rel="icon" type="image/png" href="../images/KLG-Digital-blanc.png">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../style.css">
+
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
+
+    /* =========================
+       STAR BACKGROUND
+    ========================= */
 
     #starCanvas {
       position: fixed;
@@ -16,121 +31,415 @@
       pointer-events: none;
     }
 
+    /* =========================
+       MAIN
+    ========================= */
+
     main {
       position: relative;
       z-index: 1;
-      min-height: calc(100vh - 80px);
+
+      max-width: 960px;
+      margin: 0 auto;
+
+      min-height: 100vh;
+
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+
       text-align: center;
-      padding: 40px 24px;
+
+      padding: 80px 24px 120px;
     }
 
+    /* =========================
+       TAG
+    ========================= */
+
+    .heading-tag {
+      font-size: 0.75em;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+
+      color: #a855f7;
+
+      margin-bottom: 18px;
+    }
+
+    /* =========================
+       404
+    ========================= */
+
     .error-code {
-      font-size: clamp(6em, 20vw, 12em);
-      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 24px;
+
+      margin-bottom: 28px;
+    }
+
+    .error-code span {
+      font-size: clamp(6rem, 18vw, 11rem);
+      font-weight: 900;
       line-height: 1;
-      background: linear-gradient(135deg, #7c3aed, #a855f7, #c084fc);
+
+      background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #a855f7,
+        #c084fc
+      );
+
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      margin-bottom: 8px;
-      animation: pulse-glow 3s ease-in-out infinite;
     }
 
-    @keyframes pulse-glow {
-      0%, 100% { filter: brightness(1); }
-      50%       { filter: brightness(1.2); }
+    /* =========================
+       DEATH STAR
+    ========================= */
+
+    .death-star {
+      position: relative;
+
+      width: clamp(100px, 14vw, 160px);
+      aspect-ratio: 1;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle at 35% 35%,
+          #707070,
+          #2a2a35 70%
+        );
+
+      border: 2px solid rgba(255,255,255,0.08);
+
+      box-shadow:
+        0 0 40px rgba(168,85,247,0.25),
+        inset -20px -20px 40px rgba(0,0,0,0.45);
+
+      animation:
+        floatStar 5s ease-in-out infinite;
     }
 
-    .error-title {
-      font-size: clamp(1.2em, 3vw, 1.8em);
-      font-weight: 700;
+    /* Canon */
+
+    .death-star::before {
+      content: "";
+
+      position: absolute;
+
+      width: 30%;
+      aspect-ratio: 1;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(circle, #111, #222);
+
+      top: 22%;
+      left: 18%;
+
+      box-shadow:
+        inset 0 0 12px rgba(255,255,255,0.08);
+    }
+
+    /* Ligne */
+
+    .death-star::after {
+      content: "";
+
+      position: absolute;
+
+      width: 100%;
+      height: 2px;
+
+      background: rgba(255,255,255,0.12);
+
+      top: 52%;
+      left: 0;
+    }
+
+    /* Texture */
+    .death-star-detail {
+      position: absolute;
+      inset: 0;
+
+      border-radius: 50%;
+
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent 0px,
+          transparent 8px,
+          rgba(255,255,255,0.03) 9px
+        );
+
+      opacity: 0.4;
+    }
+
+    /* Laser */
+    .laser-line {
+      position: absolute;
+
+      width: 220px;
+      height: 4px;
+
+      top: 50%;
+      left: -170px;
+
+      transform: rotate(-12deg);
+
+      border-radius: 999px;
+
+      background:
+        linear-gradient(
+          90deg,
+          white,
+          #d4ff32,
+          #b7ff00,
+          rgba(170,255,0,0.4),
+          rgba(140,255,0,0)  
+        );
+
+      box-shadow:
+        0 0 8px #b7ff00,
+        0 0 16px #b7ff00,
+        0 0 32px rgba(183,255,0,0.8);
+
+      opacity: 0.95;
+
+      animation: laserPulse 2s ease-in-out infinite;
+    
+    }
+
+    /* Animation */
+    @keyframes floatStar {
+
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-8px) rotate(2deg);
+      }
+    }
+
+    /* =========================
+       TITRE
+    ========================= */
+
+    h1 {
+      font-size: clamp(2.2em,5vw,3.4em);
+      font-weight: 800;
+
       color: white;
+
       margin-bottom: 16px;
     }
 
-    .error-desc {
-      font-size: 0.95em;
+    .subtitle {
       color: #6b6b8a;
+
+      font-size: 1em;
       line-height: 1.7;
-      max-width: 420px;
-      margin-bottom: 48px;
+
+      margin-bottom: 56px;
+
+      max-width: 520px;
     }
 
-    .error-actions {
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta-contact {
       display: flex;
-      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 24px;
+
+      background: rgba(168,85,247,0.06);
+
+      border: 1px solid rgba(168,85,247,0.25);
+
+      border-radius: 16px;
+
+      padding: 28px 32px;
+
       flex-wrap: wrap;
-      justify-content: center;
     }
 
-    .btn-home {
+    .cta-text {
+      font-size: 1em;
+      font-weight: 700;
+
+      color: white;
+
+      margin-bottom: 4px;
+    }
+
+    .cta-sub {
+      font-size: 0.85em;
+      color: #6b6b8a;
+    }
+
+    .btn-cta {
       display: inline-flex;
       align-items: center;
       gap: 8px;
+
       padding: 12px 24px;
-      background: linear-gradient(135deg, #7c3aed, #a855f7);
+
+      background:
+        linear-gradient(
+          135deg,
+          #7c3aed,
+          #a855f7
+        );
+
       border-radius: 10px;
+
       color: white;
+
       font-size: 0.88em;
       font-weight: 700;
+
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
+
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
-    .btn-home:hover {
+    .btn-cta:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(168,85,247,0.4);
+
+      box-shadow:
+        0 8px 24px rgba(168,85,247,0.4);
     }
 
-    .btn-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 10px;
-      color: white;
-      font-size: 0.88em;
-      font-weight: 700;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
+    /* =========================
+       RESPONSIVE
+    ========================= */
 
-    .btn-back:hover { background: rgba(255,255,255,0.09); }
+    @media (max-width: 600px) {
+
+      main {
+        padding: 48px 16px 80px;
+      }
+
+      .error-code {
+        gap: 16px;
+      }
+
+      .death-star {
+        width: 90px;
+      }
+
+      .cta-contact {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
 
   </style>
 </head>
+
 <body>
 
-  <!-- ===================== NAVBAR JS ================= -->
-  <script src="js/navbar.js"></script>
-  <!-- ================================================= -->
+  <!-- ===================== STARS CANVAS ===================== -->
+  <canvas id="starCanvas"></canvas>
+  <!-- ======================================================== -->
 
-  <!-- ===================== STARS JS ================== -->
-  <script src="js/stars.js"></script>
-  <!-- ================================================= -->
 
+  <!-- ===================== NAVBAR JS ======================== -->
+  <script src="../js/navbar.js"></script>
+  <!-- ======================================================== -->
+
+
+  <!-- ===================== STARS JS ========================= -->
+  <script src="../js/stars.js"></script>
+  <!-- ======================================================== -->
+
+
+  <!-- ======================= MAIN =========================== -->
   <main>
-    <div class="error-code">404</div>
-    <div class="error-title">Page introuvable</div>
-    <p class="error-desc">
-      Cette page n'existe pas ou a été déplacée.<br>
-      Un souci ? Me voici.
-    </p>
-    <div class="error-actions">
-      <a href="index.html" class="btn-home">← Retour à l'accueil</a>
-      <a href="pages/contact.html" class="btn-back">Me contacter</a>
+
+    <!-- 404 -->
+
+    <div class="error-code">
+
+      <span>4</span>
+
+      <div class="death-star">
+        <div class="death-star-detail"></div>
+        <div class="laser-line"></div>
+      </div>
+
+      <span>4</span>
+
     </div>
+
+    <!-- TITLE -->
+
+    <h1>Page introuvable</h1>
+
+    <!-- DESCRIPTION -->
+
+    <p class="subtitle">
+      Cette page n'existe pas ou a été déplacée.<br>
+      L'Étoile de la Mort semble avoir détruit ce secteur.
+    </p>
+
+    <!-- CTA -->
+
+    <div class="cta-contact">
+
+      <div>
+        <div class="cta-text">
+          Retourner sur le site ?
+        </div>
+
+        <div class="cta-sub">
+          Un souci ? Me voici. Je réponds sous 48h.
+        </div>
+      </div>
+
+      <!-- IMPORTANT :
+           Comme 404.html est dans /pages/
+           il faut remonter d'un dossier
+      -->
+
+      <a href="../index.html" class="btn-cta">
+        ← Retour à l'accueil
+      </a>
+
+    </div>
+
   </main>
 
-  <!-- ===================== FOOTER JS ================= -->
-  <script src="js/footer.js"></script>
-  <!-- ================================================= -->
+  <!-- ======================================================== -->
+
+
+  <!-- ===================== FOOTER JS ======================== -->
+
+  <script src="../js/footer.js"></script>
+
+  <!-- ======================================================== -->
 
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="fr">    
