@@ -1,20 +1,16 @@
-// ===================== CANVAS ÉTOILES PARTAGÉ =====================
-// Modifier ce fichier met à jour les étoiles sur toutes les pages.
-// En mode clair, le canvas est géré par theme.js (lune + cratères).
+// ===================== CANVAS ÉTOILES =====================
+// Mode sombre uniquement — étoiles animées.
+// En mode clair, moon.js prend le relais.
 
 (function () {
 
-  // Ne pas lancer les étoiles en mode clair
   if (document.documentElement.getAttribute('data-theme') === 'light') return;
 
-  // Créer et injecter le canvas
   const canvas = document.createElement('canvas');
   canvas.id = 'starCanvas';
   document.body.insertAdjacentElement('afterbegin', canvas);
-
   const ctx = canvas.getContext('2d');
 
-  // Redimensionner le canvas à la taille de la fenêtre
   function resizeCanvas() {
     canvas.width  = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -22,7 +18,6 @@
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
 
-  // Générer les étoiles
   const STAR_COUNT = 180;
   const stars = Array.from({ length: STAR_COUNT }, () => ({
     x:      Math.random() * window.innerWidth,
@@ -34,7 +29,6 @@
     purple: Math.random() < 0.15,
   }));
 
-  // Boucle d'animation
   function drawStars() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     stars.forEach(s => {

@@ -1,7 +1,7 @@
 // ===================== THÈME SOMBRE / CLAIR =====================
 // Mode sombre : étoiles animées (stars.js)
-// Mode clair  : surface lunaire — fond clair avec texture de cratères subtils
-// Bouton thème : dernier lien navbar (desktop) + dernier item menu mobile
+// Mode clair  : surface lunaire réaliste (moon.js)
+// Bouton thème : fin des liens navbar desktop + dernier item menu mobile
 
 (function () {
 
@@ -20,7 +20,14 @@
     localStorage.setItem(STORAGE_KEY, theme);
   }
 
-  // ── Canvas lune : fond clair avec micro-cratères ───────────
+  // ── Chemin vers moon.js selon la page courante ─────────────
+  function moonScriptPath() {
+    return window.location.pathname.includes('/pages/')
+      ? '../js/moon.js'
+      : 'js/moon.js';
+  }
+
+  // ── Créer le canvas et charger moon.js dynamiquement ───────
   function createMoonCanvas() {
     let canvas = document.getElementById('starCanvas');
     if (!canvas) {
@@ -28,72 +35,26 @@
       canvas.id = 'starCanvas';
       document.body.insertAdjacentElement('afterbegin', canvas);
     }
-    drawMoon(canvas);
-    window.addEventListener('resize', () => drawMoon(canvas), { passive: true });
+
+    const script = document.createElement('script');
+    script.src = moonScriptPath();
+    script.onload = () => {
+      if (typeof window.drawMoonSurface === 'function') {
+        window.drawMoonSurface(canvas);
+        window.addEventListener('resize', () => window.drawMoonSurface(canvas), { passive: true });
+      }
+    };
+    document.head.appendChild(script);
   }
 
-  function drawMoon(canvas) {
-    const ctx = canvas.getContext('2d');
-    const W = canvas.width  = window.innerWidth;
-    const H = canvas.height = window.innerHeight;
-
-    // Fond clair uniforme
-    ctx.fillStyle = '#c8c8d0';
-    ctx.fillRect(0, 0, W, H);
-
-    // Générateur pseudo-aléatoire stable
-    let seed = 42;
-    function rand() {
-      seed = (seed * 9301 + 49297) % 233280;
-      return seed / 233280;
-    }
-
-    // Micro-cratères — très petits et très subtils
-    for (let i = 0; i < 80; i++) {
-      const x = rand() * W;
-      const y = rand() * H;
-      const r = rand() * 6 + 2;
-
-      // Ombre portée (bas-droite)
-      ctx.beginPath();
-      ctx.arc(x + 1, y + 1, r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(90, 85, 105, ${rand() * 0.12 + 0.04})`;
-      ctx.fill();
-
-      // Bord éclairé (haut-gauche)
-      ctx.beginPath();
-      ctx.arc(x - 0.5, y - 0.5, r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(220, 220, 230, ${rand() * 0.15 + 0.05})`;
-      ctx.fill();
-
-      // Intérieur légèrement plus sombre
-      ctx.beginPath();
-      ctx.arc(x, y, r * 0.6, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(100, 95, 115, ${rand() * 0.08 + 0.03})`;
-      ctx.fill();
-    }
-
-    // Très petits points (poussière lunaire)
-    for (let i = 0; i < 150; i++) {
-      const x = rand() * W;
-      const y = rand() * H;
-      const r = rand() * 0.8 + 0.2;
-      ctx.beginPath();
-      ctx.arc(x, y, r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(90, 85, 110, ${rand() * 0.15 + 0.05})`;
-      ctx.fill();
-    }
-  }
-
-  // ── Injecter le bouton dans la navbar ──────────────────────
-  // Position : fin des liens (comme Dracula Theme)
+  // ── Bouton thème dans la navbar ────────────────────────────
   function injectToggleButton() {
     const navbar = document.querySelector('.navbar');
     if (!navbar) return;
 
     const theme = getPreferredTheme();
 
-    // Créer le bouton
+    // Bouton desktop — après les nav-links
     const btn = document.createElement('button');
     btn.className = 'theme-toggle';
     btn.setAttribute('aria-label', 'Changer de thème');
@@ -107,17 +68,15 @@
       location.reload();
     });
 
-    // Desktop : insérer après les nav-links (fin de navbar)
     const navLinks = navbar.querySelector('.nav-links');
     if (navLinks) {
       navLinks.after(btn);
     } else {
-      // Fallback : avant le menu-toggle
       const menuToggle = navbar.querySelector('.menu-toggle');
       navbar.insertBefore(btn, menuToggle);
     }
 
-    // Mobile : ajouter comme dernier item du menu
+    // Bouton mobile — dernier item du menu
     if (navLinks) {
       const li = document.createElement('li');
       li.className = 'theme-toggle-mobile';
@@ -145,8 +104,78 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     injectToggleButton();
-    if (theme === 'light') createMoonCanvas();
+    if (theme === 'light') {
+      createMoonCanvas();
+      initNavScroll();
+    }
   });
+  // ── Transition couleur navbar au scroll (mode clair) ───────
+  function initNavScroll() {
+    if (getPreferredTheme() !== 'light') return;
+
+    const navbar   = document.querySelector('.navbar');
+    const navLinks = document.querySelectorAll('.nav-links a, .navbar .logo');
+    if (!navbar || !navLinks.length) return;
+
+    // Hauteur de l'horizon : 25% de la fenêtre (comme dans moon.js)
+    function getHorizonY() {
+      const base = window.innerHeight * 0.25;
+      return Math.max(-window.innerHeight, base - window.scrollY * 1.5);
+    }
+
+    function updateNavColor() {
+      const scrollY  = window.scrollY;
+      const horizonY = getHorizonY();
+      const navH     = navbar.offsetHeight;
+
+      // La navbar est dans le ciel si son bas est au-dessus de l'horizon
+      const navBottom = scrollY + navH;
+      const onSurface = navBottom > horizonY;
+
+      const textColor = onSurface ? '#1a1a2e' : 'white';
+      const navBg     = onSurface
+        ? 'rgba(200,200,208,0.75)'
+        : 'rgba(7,7,26,0.7)';
+
+      navbar.style.background     = navBg;
+      navbar.style.backdropFilter = 'blur(10px)';
+
+      // Liens navbar
+      navLinks.forEach(a => { a.style.color = textColor; });
+
+      // Hamburger
+      document.querySelectorAll('.menu-toggle span')
+        .forEach(s => { s.style.background = textColor; });
+
+      // Bouton thème
+      const btn = document.querySelector('.theme-toggle');
+      if (btn) btn.style.color = textColor;
+
+      // Logo
+      const logoImg = document.querySelector('.logo-img');
+      if (logoImg) {
+        const isPages = window.location.pathname.includes('/pages/');
+        const base    = isPages ? '../images/' : 'images/';
+        logoImg.src   = onSurface
+          ? base + 'KLG-Digital-noir.png'
+          : base + 'KLG-Digital-blanc.png';
+      }
+
+      // Titres et textes — blanc dans le ciel, foncé sur la surface
+      document.querySelectorAll('h1, h2, .heading-tag, .subtitle, .profile-name, .profile-bio, .timeline-title, .timeline-desc, .service-name, .service-desc, .card-title, .card-desc, .cta-text, .cta-sub, .award-title, .lang-name, .skill-group-title, .hero-h1, .hero-desc, .profile-title, .last-updated, .privacy-section p, .privacy-section li, .privacy-section h2').forEach(el => {
+        const rect    = el.getBoundingClientRect();
+        const elMid   = rect.top + rect.height / 2;
+        // Comparer position écran vs horizon écran (pas besoin d'ajouter scrollY)
+        const onLunar = elMid > horizonY;
+        el.style.color = onLunar ? '#1a1a2e' : '';
+      });
+    }
+
+    updateNavColor();
+    window.addEventListener('scroll', updateNavColor, { passive: true });
+    window.addEventListener('resize', updateNavColor, { passive: true });
+  }
+
 
   // Changement système sans override manuel
   window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {

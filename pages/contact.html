@@ -12,128 +12,6 @@
 
   <style>
 
-    /* ================= RESET ================= */
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    /* Variables gérées par style.css */
-
-    /* Variables mode clair */
-    [data-theme="light"] {
-      /* via style.css */
-      --surface: rgba(0,0,0,0.04);
-      --border:  rgba(124,58,237,0.2);
-      --purple:  #7c3aed;
-      --text:    #1a1a2e;
-      --muted:   #5a5a7a;
-    }
-
-    /* ================= BASE ================= */
-    body {
-      font-family: Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* Canvas étoiles / lune — géré par stars.js et theme.js */
-    #starCanvas {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* ================= NAVBAR ================= */
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      background: rgba(7,7,26,0.7);
-      backdrop-filter: blur(12px);
-    }
-
-    /* Mode clair navbar */
-    [data-theme="light"] .navbar {
-      background: rgba(144,144,144,0.85);
-    }
-
-    .logo { text-decoration: none; display: flex; align-items: center; }
-    .logo-img { height: 40px; width: auto; display: block; }
-
-    .navbar a { color: white; text-decoration: none; }
-    .navbar a:hover { color: var(--purple); }
-
-    [data-theme="light"] .navbar a { color: #1a1a2e; }
-    [data-theme="light"] .navbar a:hover { color: #7c3aed; }
-
-    .nav-links { display: flex; gap: 25px; list-style: none; }
-    .nav-links .active { color: var(--purple); }
-
-    [data-theme="light"] .nav-links .active { color: #7c3aed; }
-
-    /* ================= HAMBURGER ================= */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-      z-index: 200;
-    }
-
-    .menu-toggle span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: white;
-      border-radius: 2px;
-      transition: transform 0.35s ease, opacity 0.25s ease;
-      transform-origin: center;
-    }
-
-    [data-theme="light"] .menu-toggle span { background: #1a1a2e; }
-
-    .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .menu-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-    .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    /* ================= BOUTON THÈME ================= */
-    .theme-toggle {
-      background: none;
-      border: 1px solid rgba(168,85,247,0.3);
-      border-radius: 8px;
-      color: white;
-      cursor: pointer;
-      padding: 6px 10px;
-      font-size: 0.9em;
-      display: flex;
-      align-items: center;
-      transition: background 0.2s, border-color 0.2s, color 0.2s;
-    }
-
-    .theme-toggle:hover {
-      background: rgba(168,85,247,0.15);
-      border-color: rgba(168,85,247,0.6);
-    }
-
-    [data-theme="light"] .theme-toggle {
-      color: #1a1a2e;
-      border-color: rgba(124,58,237,0.3);
-    }
-
-    [data-theme="light"] .theme-toggle:hover {
-      background: rgba(124,58,237,0.1);
-    }
-
     /* ================= CONTENU PRINCIPAL ================= */
     main {
       position: relative;
@@ -219,32 +97,13 @@
       width: 100%;
     }
 
-    /* Mode clair — carte formulaire */
-    [data-theme="light"] .form-card {
-      background: rgba(255,255,255,0.55);
-      border-color: rgba(124,58,237,0.3);
-    }
-
-    /* Mode clair — champs de formulaire */
-    [data-theme="light"] input,
-    [data-theme="light"] select,
-    [data-theme="light"] textarea {
-      background: rgba(255,255,255,0.7);
-      border-color: rgba(124,58,237,0.25);
-      color: #1a1a2e;
-    }
-
-    [data-theme="light"] input::placeholder,
-    [data-theme="light"] textarea::placeholder {
-      color: #8a8aaa;
-    }
-
     input:focus, select:focus, textarea:focus {
       border-color: var(--purple);
       background: rgba(168,85,247,0.07);
       box-shadow: 0 0 0 3px rgba(168,85,247,0.12);
     }
 
+    /* Flèche personnalisée du select */
     select {
       appearance: none;
       cursor: pointer;
@@ -255,7 +114,6 @@
     }
 
     select option { background: #0f0f2a; }
-    [data-theme="light"] select option { background: #f0eff5; }
 
     textarea {
       resize: vertical;
@@ -268,6 +126,25 @@
       background: var(--border);
       margin: 28px 0;
     }
+
+    /* Mode clair — carte et champs */
+    [data-theme="light"] .form-card {
+      background: rgba(255,255,255,0.55);
+      border-color: rgba(124,58,237,0.3);
+    }
+
+    [data-theme="light"] input,
+    [data-theme="light"] select,
+    [data-theme="light"] textarea {
+      background: rgba(255,255,255,0.7);
+      border-color: rgba(124,58,237,0.25);
+      color: #1a1a2e;
+    }
+
+    [data-theme="light"] input::placeholder,
+    [data-theme="light"] textarea::placeholder { color: #8a8aaa; }
+
+    [data-theme="light"] select option { background: #c8c8d0; }
 
     /* ================= BOUTON ENVOI ================= */
     .btn-submit {
@@ -319,104 +196,35 @@
     }
 
     /* ================= MOBILE ================= */
-    @media screen and (max-width: 768px) {
-
-      .navbar { padding: 16px 20px; }
-
-      .menu-toggle { display: flex; }
-
-      .nav-links {
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100vh;
-        background-color: rgba(7,7,26,0.95);
-        backdrop-filter: blur(10px);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transform: translateX(-100%);
-        transition: transform 0.5s ease;
-      }
-
-      [data-theme="light"] .nav-links {
-        background-color: rgba(144,144,144,0.97);
-      }
-
-      [data-theme="light"] .nav-links a { color: #1a1a2e; }
-
-      .nav-links.mobile-menu { transform: translateX(0); }
-      .nav-links li { margin: 20px 0; font-size: 1.5em; }
-    }
-
     @media (max-width: 600px) {
       main { padding: 48px 16px 80px; }
       .form-card { padding: 24px 20px; }
       .form-row { grid-template-columns: 1fr; gap: 0; }
     }
 
-    /* ================= FOOTER ================= */
-    .site-footer {
-      position: relative;
-      z-index: 1;
-      border-top: 1px solid rgba(168,85,247,0.15);
-      padding: clamp(20px, 3vw, 32px) clamp(16px, 4vw, 40px);
-    }
-
-    [data-theme="light"] .site-footer { border-top-color: rgba(124,58,237,0.2); }
-
-    .footer-inner {
-      max-width: 960px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .footer-left { display: flex; flex-direction: column; gap: 4px; }
-    .footer-copy { font-size: 0.8em; color: #6b6b8a; }
-    .footer-location { font-size: 0.78em; color: #4a4a6a; display: flex; align-items: center; gap: 6px; }
-    .footer-location i { color: #a855f7; font-size: 0.85em; }
-    .footer-links { display: flex; align-items: center; gap: 10px; font-size: 0.8em; flex-wrap: wrap; }
-    .footer-links a { color: #6b6b8a; text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 6px; }
-    .footer-links a:hover { color: #a855f7; }
-    .footer-sep { color: #3d3d5c; }
-
-    [data-theme="light"] .footer-copy,
-    [data-theme="light"] .footer-location { color: #5a5a7a; }
-    [data-theme="light"] .footer-links a  { color: #5a5a7a; }
-    [data-theme="light"] .footer-links a:hover { color: #7c3aed; }
-    [data-theme="light"] .footer-sep { color: #b0afc0; }
-
-    @media (max-width: 600px) {
-      .footer-inner { flex-direction: column; align-items: flex-start; }
-    }
-
   </style>
 </head>
 <body>
 
-  <!-- ===================== THEME JS ===================== -->
+  <!-- ===================== THEME JS ================== -->
   <script src="../js/theme.js"></script>
   <!-- ================================================= -->
 
-  <!-- ===================== NAVBAR JS ===================== -->
+  <!-- ===================== NAVBAR JS ================= -->
   <script src="../js/navbar.js"></script>
   <!-- ================================================= -->
 
-  <!-- ===================== STARS JS ===================== -->
+  <!-- ===================== STARS JS ================== -->
   <script src="../js/stars.js"></script>
   <!-- ================================================= -->
 
-
-  <!-- ===================== CONTENU ===================== -->
+  <!-- ===================== CONTENU =================== -->
   <main>
     <p class="heading-tag">✦ Parlons de ton projet</p>
     <h1>Me contacter</h1>
     <p class="subtitle">Un souci ? Me voici. Remplis le formulaire et je te réponds sous 48h.</p>
 
-    <!-- CARTE FORMULAIRE -->
+    <!-- Carte formulaire -->
     <div class="form-card">
       <form id="contactForm">
 
@@ -481,12 +289,11 @@
   </main>
   <!-- ================================================= -->
 
-
-  <!-- ===================== FOOTER JS ===================== -->
+  <!-- ===================== FOOTER JS ================= -->
   <script src="../js/footer.js"></script>
   <!-- ================================================= -->
 
-  <!-- ===================== SCRIPTS ===================== -->
+  <!-- ===================== SCRIPTS =================== -->
   <script>
 
     // Envoi du formulaire via Web3Forms

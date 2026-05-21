@@ -40,6 +40,9 @@ body {
     height: 100vh;
     width: 100%;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* ================= NAVBAR ================= */
@@ -56,6 +59,7 @@ body {
     background: rgba(7, 7, 26, 0.7);
     backdrop-filter: blur(10px);
 }
+
 
 /* Logo à gauche */
 .navbar .logo { justify-self: start; }
@@ -137,6 +141,8 @@ body {
 
     .navbar {
         padding: 16px 20px;
+        display: flex;
+        justify-content: space-between;
     }
 
     .menu-toggle {
@@ -153,6 +159,7 @@ body {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        justify-self: unset;
         transform: translateX(-100%);
         transition: transform 0.5s ease;
     }
@@ -252,38 +259,37 @@ body {
 /* ===================== MODE CLAIR ===================== */
 
 [data-theme="light"] {
-    --bg:      #909090;
-    --text:    #1a1a2e;
-    --muted:   #5a5a7a;
-    --border:  rgba(124,58,237,0.2);
-    --surface: rgba(0,0,0,0.04);
+    --bg:      #07071a;
+    --text:    white;
+    --muted:   #6b6b8a;
+    --purple:  #a855f7;
+    --border:  rgba(168,85,247,0.25);
+    --surface: rgba(255,255,255,0.04);
 }
 
 [data-theme="light"] body {
-    background-color: #c8c8d0; /* Fond géré par le canvas */
-    color: #1a1a2e;
+    background-color: #07071a;
+    color: white;
 }
 
 /* Navbar en mode clair */
 [data-theme="light"] .navbar {
-    background: rgba(200, 200, 208, 0.6);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(124,58,237,0.1);
+    background: rgba(200, 200, 208, 0.7);
+    backdrop-filter: blur(10px);
 }
 
-[data-theme="light"] .navbar a { color: #1a1a2e; }
 [data-theme="light"] .navbar a:hover { color: #7c3aed; }
 [data-theme="light"] .nav-links .active { color: #7c3aed; }
 
 /* Hamburger en mode clair */
 [data-theme="light"] .menu-toggle span { background: #1a1a2e; }
 
-/* Menu mobile en mode clair */
-[data-theme="light"] .nav-links {
-    background-color: rgba(200, 200, 208, 0.97);
+/* Menu mobile en mode clair — fond sombre */
+@media (max-width: 768px) {
+    [data-theme="light"] .nav-links {
+        background-color: rgba(7,7,26,0.97);
+    }
 }
-
-[data-theme="light"] .nav-links a { color: #1a1a2e; }
 
 /* Footer en mode clair */
 [data-theme="light"] .site-footer {
@@ -316,14 +322,7 @@ body {
     border-color: rgba(168,85,247,0.6);
 }
 
-[data-theme="light"] .theme-toggle {
-    color: #1a1a2e;
-    border-color: rgba(124,58,237,0.3);
-}
-
-[data-theme="light"] .theme-toggle:hover {
-    background: rgba(124,58,237,0.1);
-}
+/* Bouton thème mode clair — même que sombre */
 
 /* Tags tarifaires en mode clair */
 [data-theme="light"] .price-fixed {
@@ -422,7 +421,7 @@ body {
     color: #4a1d96;
 }
 
-[data-theme="light"] .rate-banner strong { color: #1a1a2e; }
+[data-theme="light"] .rate-banner strong { color: white; }
 
 /* ── BOUTON THÈME MOBILE (dernier item menu) ── */
 .theme-toggle-mobile { margin-top: 8px; }
@@ -445,14 +444,7 @@ body {
     background: rgba(168,85,247,0.15);
 }
 
-[data-theme="light"] .theme-toggle-mobile-btn {
-    color: #1a1a2e;
-    border-color: rgba(124,58,237,0.3);
-}
-
-[data-theme="light"] .theme-toggle-mobile-btn:hover {
-    background: rgba(124,58,237,0.1);
-}
+/* Bouton mobile mode clair — même que sombre */
 
 /* Masquer le bouton desktop sur mobile */
 @media (max-width: 768px) {
