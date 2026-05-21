@@ -143,6 +143,7 @@
       // Liens navbar — sur mobile toujours blanc (menu fond sombre)
       const isMobile = window.innerWidth <= 768;
       navLinks.forEach(a => {
+        if (a.classList && a.classList.contains('active')) return;
         a.style.color = isMobile ? 'white' : textColor;
       });
 
